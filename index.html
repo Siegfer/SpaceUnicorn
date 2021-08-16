@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Space Unicorn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
-<body>
-    <canvas id="canvas"></canvas>
+<body>  
+ <div id="container" >
+    <aside id="top-left"><h2>Space Unicorn</h2></aside>
+    <aside id="top-right"><h2 id="movement"></h2></aside>
+    <main>
+        <canvas id="game"><!--GAME GO IN HERE--></canvas>
+    </main>
+    <aside id="btm-left"><h2>Lives<br> 🦄 🦄 🦄</h2></aside>
+    <aside id="middle">Controls: 
+        <br>Up-arrow: Move Up
+        <br>Down-arrow: Move Down
+        <br>Left-arrow: Move Left
+        <br>Right-arrow: Move Right
+    </aside>
+    <aside id="btm-right"><h2 id="stats">Begin!</h2></aside>
+ </div>  
+    <script src="js/main.js"></script>
 </body>
 </html>
