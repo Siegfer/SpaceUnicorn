@@ -7,10 +7,10 @@ html, body {
 body {
     padding-top: 1em;
     text-align: center;
-    background: black;
+    background-image: url('https://i.imgur.com/qqrVt8m.gif');
     background-size: cover;
     background-repeat: space;
-    color:  blue;
+    color: whitesmoke;
   }
   
 
@@ -24,7 +24,7 @@ body {
 
   #container {
     max-width: 50em;
-    background-color: tomato;
+    background-size: cover;
     margin: 0 auto;
     padding: 1em;
     display: grid;
@@ -34,14 +34,13 @@ body {
     grid-template-areas: 
       "top-left top-left top-left" 
       "game game game" 
-      "btm-left btm-right btm-right";
+      "btm-left middle btm-right";
   }
 
   #top-left, #top-right, #btm-left, #btm-right {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: gold;
   }
 
   #top-left {
@@ -54,15 +53,20 @@ body {
 
   main {
     grid-area: game;
-    background: black;
   }
 
   #btm-left {
     grid-area: btm-left;
     color: cadetblue;
+    opacity: .5;
   }
 
   #btm-right {
     grid-area: btm-right;
-    background-color: brown;
+    opacity: .5;
+  }
+
+  #middle {
+    grid-area: middle;
+    opacity: .5;
   }
