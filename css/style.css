@@ -20,6 +20,8 @@ body {
     width: 100%;
     height: 100;
     background-color: darkblue;
+    border-radius: 5%;
+    opacity: .6;
   }
 
   #container {
@@ -45,6 +47,17 @@ body {
 
   #top-left {
     grid-area: top-left;
+    background-image: url('https://i.imgur.com/CTXgF0G.png?1');
+    opacity: 0.25;
+    background-size: cover; 
+    color: black;
+    border-radius: 80%;
+  }
+  
+  #headline {
+    grid-area: top-left;
+    color: white;
+    opacity: 1;
   }
 
   #top-right {
