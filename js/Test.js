@@ -39,73 +39,45 @@
      }
  }
  
+class Attack {
+    constructor(x, y, width, color, speed, height){
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
+        this.speed = -1.5
+    } 
+    render() {
+        ctx.drawImage(pic3, this.x, this.y += this.speed, this.width, this.height)
+    }
+}
+
+class Leprechaun {
+    constructor(x, y, width, height) {
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
+        this.speed = 2
+        this.alive = true
+    }
+    render() {
+        ctx.drawImage(pic2, this.x += this.speed, this.y, this.width, this.height)
+    }
+}
+
  // ====================== HELPER FUNCTIONS ======================= //
  // SANDBOX FOR TESTING PAINTING TECHNIQUES
  
  //  GUI
- function addNewShrek() {
-    shrek.alive = false;
-    setTimeout(() => {
-      let x = Math.floor(Math.random() * game.width) - 40;
-      let y = Math.floor(Math.random() * game.height) - 80;
-      shrek = new Crawler(x, y, "#bada55", 40, 80);
-    }, 1000);
-    return true;
-  }
-
+ 
  //  KEYBOARD INTERACTION LOGIC
- function movementHandler (e) {
-    console.log('movement', e.key);
-    
-    switch(e.which) { // another way of doing if else
-        case 87:
-            // move hero up
-            // ternary operator
-            hero.y - 10 >= 0 ? hero.y -= 10 : null;
-            break;
-        case 65:
-            // move left
-            hero.x - 10 >= 0 ? hero.x -= 10 : null;
-            break;
-        case 83:
-            // move down
-            hero.y + 10 <= game.height ? hero.y += 10 : null;
-            break;
-        case 68:
-            // move right
-            hero.x + 10 <=  game.width ? hero.x += 10 : null;
-            break;
-    }
-}
+ 
 
-document.addEventListener('keydown', function(evt) {
-    if (evt.key === 'ArrowUp' && player.y > 420) {
-      player.y -= 30
-    } else if (evt.key === 'ArrowLeft' && player.x > 0) {
-      player.x -= 30
-    } else if (evt.key === 'ArrowDown' && player.y < 495) {
-      player.y += 30
-    } else if (evt.key === 'ArrowRight' && player.x < 360) {
-      player.x += 30
-    }
 
  // ====================== GAME PROCESSES ======================= //
  
- /**
-  * @function gameLoop
-  * @todo clear the canvas
-  * @todo display p1 location
-  */
-
-function gameLoop (){
-    ctx.clearRect(0, 0, game.width, game.height);
-    movementDisplay.textContent = `X:${hero.x}\n${hero.y}`;
-    if (shrek.alive) {
-        shrek.render()
-        let hit = detectHit(hero, shrek);
-    }
-    hero.render();
-}
+ 
 
  // ====================== COLLISION DETECTION ======================= //
  function detectHit (p1, p2) {
@@ -126,32 +98,6 @@ function gameLoop (){
  
  // EVENT LISTENERS
  
- 
-window.addEventListener('DOMContentLoaded', (e) => {
-    hero = new Hero(10, 20, "teal", 20, 20);
-    shrek = new Crawler(100, 200, 'hotpink', 40, 80);
-    shrek.render();
-
-    const runGame = setInterval(gameLoop, 60);
-})
-
-document.addEventListener('keydown', movementHandler);
-
-document.getElementById('status').addEventListener('click', function() {
-    // let timer = setInterval(rePaint, 1000 / 60)
-    if (document.getElementById('status').textContent === 'Start Game') {
-      setInterval(rePaint, 1000 / 60)
-      start.play()
-      document.getElementById('status').textContent = 'Reset Game'
-    } else if(document.getElementById('status').textContent ==='Reset Game') {
-      for(i=0; i<100; i++)
-    {
-      window.clearInterval(i);
-    }
-      rePaint(true)
-      document.getElementById('status').textContent = 'Start Game'
-    }
-  });
  
  // CODE STASH FOR OLD CODE
  
