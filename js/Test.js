@@ -151,7 +151,7 @@ document.getElementById('status').addEventListener('click', function() {
       rePaint(true)
       document.getElementById('status').textContent = 'Start Game'
     }
-  })
+  });
  
  // CODE STASH FOR OLD CODE
  

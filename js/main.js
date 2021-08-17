@@ -39,6 +39,32 @@ class Unicorn {
     }
 }
 
+class Attack {
+    constructor(x, y, width, color, speed, height){
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
+        this.speed = -1.5
+    } 
+    render() {
+        ctx.drawImage(pic3, this.x, this.y += this.speed, this.width, this.height)
+    }
+}
+
+class Leprechaun {
+    constructor(x, y, width, height) {
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
+        this.speed = 2
+        this.alive = true
+    }
+    render() {
+        ctx.drawImage(pic2, this.x += this.speed, this.y, this.width, this.height)
+    }
+}
 // ====================== HELPER FUNCTIONS ======================= //
 // SANDBOX FOR TESTING PAINTING TECHNIQUES
 
