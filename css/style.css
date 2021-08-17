@@ -91,3 +91,34 @@ main {
     grid-area: middle;
     opacity: .5;
   }
+
+#unicorn{
+    display: none;
+   
+}
+
+#attack{
+  display: none;
+}
+
+#loose{
+  display: none;
+}
+
+#leprechaun{
+  display: none;
+}
+
+#status {
+  cursor: pointer;
+}
+#status:hover {
+  color: white;
+}
+#right {
+  font-size: 10px;
+  font-weight: bolder;
+}
+#left{
+  font-size: 12px;
+}

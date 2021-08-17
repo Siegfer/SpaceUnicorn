@@ -1,3 +1,10 @@
+# Daily Checklist
+- get characters to render
+
+
+
+
+
 # Project 1 requirements
 
 - Display a game in the browser

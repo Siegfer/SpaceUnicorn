@@ -80,20 +80,7 @@ class Leprechaun {
  
 
  // ====================== COLLISION DETECTION ======================= //
- function detectHit (p1, p2) {
-     let hitTest = (
-        p1.y + p1.height > p2.y  &&
-        p1.y < p2.y + p2.height &&
-        p1.x + p1.width > p2.x &&
-        p1.x < p2.x + p2.width
-     );
 
-     if (hitTest) {
-         return addNewShrek()
-     } else {
-         return false
-     }
- }
  // ====================== PAINT INTIAL SCREEN ======================= //
  
  // EVENT LISTENERS
