@@ -52,7 +52,7 @@
     }, 1000);
     return true;
   }
-  
+
  //  KEYBOARD INTERACTION LOGIC
  function movementHandler (e) {
     console.log('movement', e.key);
@@ -77,6 +77,18 @@
             break;
     }
 }
+
+document.addEventListener('keydown', function(evt) {
+    if (evt.key === 'ArrowUp' && player.y > 420) {
+      player.y -= 30
+    } else if (evt.key === 'ArrowLeft' && player.x > 0) {
+      player.x -= 30
+    } else if (evt.key === 'ArrowDown' && player.y < 495) {
+      player.y += 30
+    } else if (evt.key === 'ArrowRight' && player.x < 360) {
+      player.x += 30
+    }
+
  // ====================== GAME PROCESSES ======================= //
  
  /**
@@ -124,6 +136,22 @@ window.addEventListener('DOMContentLoaded', (e) => {
 })
 
 document.addEventListener('keydown', movementHandler);
+
+document.getElementById('status').addEventListener('click', function() {
+    // let timer = setInterval(rePaint, 1000 / 60)
+    if (document.getElementById('status').textContent === 'Start Game') {
+      setInterval(rePaint, 1000 / 60)
+      start.play()
+      document.getElementById('status').textContent = 'Reset Game'
+    } else if(document.getElementById('status').textContent ==='Reset Game') {
+      for(i=0; i<100; i++)
+    {
+      window.clearInterval(i);
+    }
+      rePaint(true)
+      document.getElementById('status').textContent = 'Start Game'
+    }
+  })
  
  // CODE STASH FOR OLD CODE
  
