@@ -9,10 +9,9 @@
  const pic2 = document.getElementById('leprechaun')
  const pic3 = document.getElementById('attack')
  const pic4 = document.getElementById('loose')
- const ctx = game.getContext('2d')
- 
+
  let pIcon = pic
- 
+
  
  // ====================== SETUP FOR CANVAS RENDERING ======================= //
  // 2D rendering context for canvas element.
@@ -22,7 +21,8 @@
  game.setAttribute("width", getComputedStyle(game)["width"]);
  
  // ====================== SETUP FOR CANVAS RENDERING ======================= //
- 
+const ctx = game.getContext('2d')
+
  // ====================== ENTITIES ======================= //
  
  // Unicorn
@@ -35,7 +35,9 @@
          this.alive = true
      }
      render() {
-         ctx.drawImage(pIcon, this.x, this.y, this,width, this.height)
+        //  ctx.drawImage(pIcon, this.x, this.y, this,width, this.height)
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
      }
  }
  
@@ -71,8 +73,41 @@ class Leprechaun {
  
  //  GUI
  
+ function addNewShrek() {
+    shrek.alive = false;
+    setTimeout(() => {
+      let x = Math.floor(Math.random() * game.width) - 40;
+      let y = Math.floor(Math.random() * game.height) - 80;
+      shrek = new Crawler(x, y, "#bada55", 40, 80);
+    }, 1000);
+    return true;
+  }
+
  //  KEYBOARD INTERACTION LOGIC
  
+ function movementHandler (e) {
+    console.log('movement', e.key);
+    
+    switch(e.which) { // another way of doing if else
+        case 87:
+            // move hero up
+            // ternary operator
+            hero.y - 10 >= 0 ? hero.y -= 10 : null;
+            break;
+        case 65:
+            // move left
+            hero.x - 10 >= 0 ? hero.x -= 10 : null;
+            break;
+        case 83:
+            // move down
+            hero.y + 10 <= game.height ? hero.y += 10 : null;
+            break;
+        case 68:
+            // move right
+            hero.x + 10 <=  game.width ? hero.x += 10 : null;
+            break;
+    }
+}
 
 
  // ====================== GAME PROCESSES ======================= //

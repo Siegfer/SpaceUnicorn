@@ -1,4 +1,6 @@
-
+// ====================== Possible Canvas Setup ======================= //
+//  game.setAttribute("height", getComputedStyle(game)["height"]); @1:19pm
+//  game.setAttribute("width", getComputedStyle(game)["width"]); @1:19pm
 // ====================== GUI ======================= //
  function addNewShrek() {
     shrek.alive = false;
@@ -59,7 +61,44 @@ function movementHandler (e) {
     hero.render();
 }
 
- // ====================== GAME PROCESSES ======================= //
+// ====================== GAME PROCESSES ======================= //
+
+// Unicorn Attack 
+let fireStatus = 1
+const arrAttack = [];
+  document.addEventListener('keydown', function(e) {
+    if (e.key === ' ' && fireStatus === 1) {
+      const light = new Attack(p1.x - 1 + (p1.width/2), p1.y -5, 6, 'red', 25, 8)
+      arrAttack.push(light)
+      fireStatus *= -1
+      setTimeout(fireReady, 350);
+    }
+  });
+  function fireReady() {
+    fireStatus *= -1
+  }
+
+  // Spawning Leprechauns
+
+const arrLeprechaun = [];                              
+function spawnLeprechaun() {
+  for(let row = 0; row < 4; row++) {
+     for(let col = 0; col < 9; col++){
+      const leprechaun = new Leprechaun (
+        col * 35 + 33, row * 35 + 15, 30, 30)
+        arrLeprechaun.push(leprechaun)
+     }
+  }
+}
+ 
+// Leprechaun movements
+spawnLeprechaun()
+    function changeMovement (resetStatus) {
+        if (resetStatus) {
+            arrLeprechaun.length = 
+        }
+    }
+    
 
 
 // ====================== COLLISION DETECTION ======================= //

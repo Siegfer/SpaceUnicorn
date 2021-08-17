@@ -1,5 +1,6 @@
 # Daily Checklist
 - get characters to render
+- settle on movement
 
 
 
