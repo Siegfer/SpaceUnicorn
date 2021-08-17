@@ -52,7 +52,8 @@ body {
 
   #top-left {
     grid-area: top-left;
-    background-image: url('https://i.imgur.com/CTXgF0G.png?1');
+    /* background-image: url('https://i.imgur.com/CTXgF0G.png?1'); Galaxy background */
+    /* background-image: url('https://i.imgur.com/tRwUHJu.gif'); Seizure fast galaxy background */
     opacity: 0.25;
     background-size: cover; 
     color: black;
