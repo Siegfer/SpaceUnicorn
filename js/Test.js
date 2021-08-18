@@ -74,32 +74,40 @@ class Leprechaun {
     } 
 }
 
- // ====================== HELPER FUNCTIONS ======================= //
- 
- //  GUI
+// ====================== HELPER FUNCTIONS ======================= //
 
- // Leprechaun Array
- let arrLeprechaun = [];
- function spawnLeprechaun() {
-     for(let y = 0; y < 4; y++) {
-         for(let x = 0; x < 10; x++) {
-             let leprechaun = new Leprechaun (
-                 x * 70 + 20, y * 40 + 70, 'tomato', 30, 30)
-                 arrLeprechaun.push(leprechaun)
-                 leprechaun.render();
+//  GUI
+
+// Leprechaun Array
+let arrLeprechaun = [];
+function spawnLeprechaun() {
+    for(let y = 0; y < 2; y++) {
+        for(let x = 0; x < 5; x++) {
+            let leprechaun = new Leprechaun (
+                x * 70 + 20, y * 40 + 70, 'tomato', 30, 30)
+                arrLeprechaun.push(leprechaun)
+                //   leprechaun.render();
+                 arrLeprechaun.forEach(element => element.render());
                 }
+                console.log ('spawn:', spawnLeprechaun);
             }
         }
+spawnLeprechaun();
+
 // moving Leprechauns
-function moveLeprechauns(e) {
+function moveLeprechauns() {
+    spawnLeprechaun();
     if (e) {
         arrLeprechaun = 0
         spawnLeprechaun()
     } else {
-        arrLeprechaun.forEach(() => {
-            
-        })
+        for (const leprechaun of arrLeprechaun) {
+            let x = math.floor(math.random() * game.width) -40;
+            let y = math.floor(math.random() * game.height) -80;
+            leprechaun = new Leprechaun(x, y, 'pink', 40, 80)
+        }
     }
+    
 }
 
 function spawnUnicorn() {

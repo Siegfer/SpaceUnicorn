@@ -22,6 +22,15 @@ const id = setInterval(() => {
     return true;
   }
   
+  for (const person of engineerList) {
+    let { name } = person;
+    let listItem = document.createElement('li');
+    listItem.appendChild(document.createTextNode(name));
+    uList.appendChild(listItem);
+}
+let bodyList = document.body.appendChild(uList); 
+}
+makeList();
   // ====================== POSSIBLE KEYBOARD INTERACTION LOGIC ======================= //
 document.addEventListener('keydown', function(evt) {
     if (evt.key === 'ArrowUp' && player.y > 420) {
