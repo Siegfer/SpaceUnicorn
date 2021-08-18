@@ -32,7 +32,8 @@ canvas {
 }
 
 #container {
-    max-width: 50em;
+    max-width: 35em;
+    max-height: 35em;
     background-size: cover;
     margin: 0 auto;
     padding: 1em;
@@ -70,6 +71,7 @@ canvas {
 
 #top-right {
     grid-area: top-right;
+    display: none;
   }
 
 main {

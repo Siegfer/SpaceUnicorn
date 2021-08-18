@@ -1,6 +1,16 @@
 // ====================== Possible Canvas Setup ======================= //
 //  game.setAttribute("height", getComputedStyle(game)["height"]); @1:19pm
 //  game.setAttribute("width", getComputedStyle(game)["width"]); @1:19pm
+
+let x = 0;
+const id = setInterval(() => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(x, 50, size, size);
+  x += size;
+  if (x >= canvas.width) {
+    clearInterval(id);
+  }
+}, 200);
 // ====================== GUI ======================= //
  function addNewShrek() {
     shrek.alive = false;
