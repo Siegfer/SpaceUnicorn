@@ -42,7 +42,7 @@
  }
  
 class Attack {
-    constructor(x, y, color, speed, width, height){
+    constructor(x, y, color, width, height){
         this.x = x
         this.y = y
         this.color = color
@@ -74,26 +74,49 @@ class Leprechaun {
     }
 }
 
-let p1 = new Unicorn(350, 600, "teal", 20, 20);
+let p1 = new Unicorn(350, 600, "teal", 40, 40);
 let leprechaun = new Leprechaun(100, 200, 'hotpink', 40, 80);
 let bullet = new Attack(100, 200, 'blue', 82, 40);
 
 bullet.render();
-console.log(bullet.render)
+p1.render();
+leprechaun.render();
  // ====================== HELPER FUNCTIONS ======================= //
  
  //  GUI
- 
- function addNewLeprechaun() {
-    leprechaun.alive = false;
-    setTimeout(() => {
-      let x = Math.floor(Math.random() * game.width) - 40;
-      let y = Math.floor(Math.random() * game.height) - 80;
-      leprechaun = new Leprechaun(x, y, "#bada55", 40, 80);
-    }, 1000);
-    return true;
-  }
 
+ // Leprechaun Array
+ const arrLeprechaun = [];
+ function spawnLeprechaun() {
+     for(let y = 0; y < 4; y++) {
+         for(let x = 0; x < 10; x++) {
+             const leprechaun = new Leprechaun (
+                 x * 35 + 33, y * 35 + 15, 'tomato', 30, 30)
+                 leprechaun.render();
+                 arrLeprechaun.push(leprechaun)
+                }
+            }
+        }
+
+        
+//Leprechaun movement        
+spawnLeprechaun()    
+function changeMovement (e) {
+    arrLeprechaun.forEach((leprechaun) => {
+        if (leprechaun.x >= 360) {
+            arrLeprechaun.forEach((mv) => {
+                mv.speed *= -1
+                mv.y += 25
+                mv.x -= 2
+            }) } else if (leprechaun.x <= 10) {
+                arrLeprechaun.forEach((mv) => {
+                    mv.speed *= -1
+                    mv.y += 25
+                    mv.x += 2
+                }) }
+            })
+        }
+    
  //  KEYBOARD INTERACTION LOGIC
  
  function movementHandler (e) {
@@ -122,62 +145,17 @@ console.log(bullet.render)
 
  // ====================== GAME PROCESSES ======================= //
  
- function gameLoop (){
-    ctx.clearRect(0, 0, game.width, game.height);
-    movementDisplay.textContent = `X:${p1.x}\n${p1.y}`;
-    if (leprechaun.alive) {
-        leprechaun.render()
-        let hit = detectHit(p1, leprechaun);
-    }
-    p1.render();
-}
+
 
 
 
  // ====================== COLLISION DETECTION ======================= //
- function detectHit (p1, p2) {
-    let hitTest = (
-       p1.y + p1.height > p2.y  &&
-       p1.y < p2.y + p2.height &&
-       p1.x + p1.width > p2.x &&
-       p1.x < p2.x + p2.width
-    );
 
-    if (hitTest) {
-        return addNewLeprechaun()
-    } else {
-        return false
-    }
-}
  // ====================== PAINT INTIAL SCREEN ======================= //
  
  // EVENT LISTENERS
  
- window.addEventListener('DOMContentLoaded', (e) => {
-    leprechaun.render();
-
-    const runGame = setInterval(gameLoop, 60);
-})
-
-let fireStatus = 1
-const arrProjectiles = [];
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'b' && fireStatus === 1) {
-        const bullet = new Attack(p1.x - 1 + (p1.width/2), p1.y -5, 6, 'red', 25, 8)
-        arrProjectiles.push(bullet)
-        console.log('bullet:',bullet);
-        fireStatus *= -1
-        setTimeout(fireReady, 350);
-        //   sound.play()
-        }
-    });
-    function fireReady() {
-    fireStatus *= -1
-  }
-
-document.addEventListener('keydown', movementHandler);
-
-
+ 
  
  // CODE STASH FOR OLD CODE
  

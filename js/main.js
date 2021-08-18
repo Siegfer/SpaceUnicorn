@@ -115,6 +115,7 @@ class Leprechaun {
 }
 
 
+
  // ====================== GAME PROCESSES ======================= //
  
  function gameLoop (){
@@ -126,6 +127,8 @@ class Leprechaun {
     }
     p1.render();
 }
+
+
 
  // ====================== COLLISION DETECTION ======================= //
  function detectHit (p1, p2) {
