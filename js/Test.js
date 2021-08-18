@@ -5,8 +5,8 @@
 
  let movementDisplay = document.getElementById('movement');
  let game = document.getElementById('game');
- let hero;
- let shrek;
+//  let unicorn;
+//  let leprechaun;
  const ctx = game.getContext('2d');
  
  ctx.fillStyle = 'white';
@@ -92,19 +92,13 @@ function spawnLeprechaun() {
         }
 spawnLeprechaun();
 
-function spawnUnicorn() {
-    let unicorn = new Unicorn (
-        350, 600, 'gold', 40, 40)
-        unicorn.render();
-}
-
-
 
  //  KEYBOARD INTERACTION LOGIC
  
  function movementHandler (e) {
-    
-    switch(e.which) { // another way of doing if else
+    console.log('movement', e.key);
+
+    switch(e.which) { 
         case 87:
             // move hero up
             // ternary operator
@@ -123,48 +117,47 @@ function spawnUnicorn() {
             p1.x + 10 <=  game.width ? p1.x += 10 : null;
             break;
     }
-}
-
+} 
 
  // ====================== GAME PROCESSES ======================= //
  
  function gameLoop (){
      ctx.clearRect(0, 0, game.width, game.height);
-     movementDisplay.textContent = `X:${p1.x}, Y:${p1.y}`;
      if (bullet.alive) {
-         bullet.render()
-         spawnUnicorn()
+         bullet.render();
+         p1.render();
          arrLeprechaun.forEach(element => element.render());
-
         } 
+        
 }
 
-// arrTriangles.forEach(element => element.render());
 
 // ====================== COLLISION DETECTION ======================= //
 
-// function detectHit (p1,p2) {
-//     for (let i = 0; i< p2.length; i++) {
-//         let hitTest = (
-//             p1.y + p1.height > p2.y  &&
-//             p1.y < p2.y + p2.height &&
-//             p1.x + p1.width > p2.x &&
-//             p1.x < p2.x + p2.width 
-//         )}
-//     }
+function detectHit (p1,p2) {
+    for (let i = 0; i< p2.length; i++) {
+        let hitTest = (
+            p1.y + p1.height > p2.y  &&
+            p1.y < p2.y + p2.height &&
+            p1.x + p1.width > p2.x &&
+            p1.x < p2.x + p2.width 
+        )}
+    }
 
 
 // ====================== PAINT INTIAL SCREEN ======================= //
 
 // EVENT LISTENERS
 
+// Unicorn array
+
 window.addEventListener('DOMContentLoaded', (e) => {
-    p1 = new Unicorn(500, 900, "teal", 20, 20);
+    p1 = new Unicorn(500, 500, "teal", 20, 20);
     bullet = new Attack(100, 500, 'white', 30, 30);
     const runGame = setInterval(gameLoop, 60);
 })
 
 document.addEventListener('keydown', movementHandler);
- 
+
  // CODE STASH FOR OLD CODE
  
