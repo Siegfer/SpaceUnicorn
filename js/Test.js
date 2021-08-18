@@ -64,23 +64,16 @@ class Leprechaun {
         this.color = color
         this.width = width
         this.height = height
-        this.speed = 5
+        this.speed = .5
         this.alive = true
     }
     render() {
         // ctx.drawImage(pic2, this.x += this.speed, this.y, this.width, this.height)
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y += this.speed, this.width, this.height);
-    }
+    } 
 }
 
-let p1 = new Unicorn(350, 600, "teal", 40, 40);
-let leprechaun = new Leprechaun(100, 200, 'gold', 40, 80);
-let bullet = new Attack(100, 200, 'blue', 82, 40);
-
-// bullet.render();
-// p1.render();
-// leprechaun.render();
  // ====================== HELPER FUNCTIONS ======================= //
  
  //  GUI
@@ -92,43 +85,28 @@ let bullet = new Attack(100, 200, 'blue', 82, 40);
          for(let x = 0; x < 10; x++) {
              let leprechaun = new Leprechaun (
                  x * 70 + 20, y * 40 + 70, 'tomato', 30, 30)
-                 leprechaun.render();
                  arrLeprechaun.push(leprechaun)
+                 leprechaun.render();
                 }
             }
         }
+// moving Leprechauns
+function moveLeprechauns(e) {
+    if (e) {
+        arrLeprechaun = 0
+        spawnLeprechaun()
+    } else {
+        arrLeprechaun.forEach(() => {
+            
+        })
+    }
+}
 
-
-//Leprechaun movement         
-function changeMovement ()  {
-    arrLeprechaun.forEach((leprechaun) => {
-        if (leprechaun.y >= 360) {
-            console.log(leprechaun);
-            arrLeprechaun.forEach((mv) => {
-                mv.speed *= +20
-                mv.y += 40
-            }) } else (leprechaun.y <= 5); {
-                arrLeprechaun.forEach((mv) => {
-                    mv.speed *= +20
-                    mv.y += 40
-                }) }
-            })
-        }
-
-function changeMovement ()  {
-    arrLeprechaun.forEach((leprechaun) => {
-        if (leprechaun.y >= 360) {
-            arrLeprechaun.forEach((mv) => {
-                mv.speed *= +20
-                mv.y += 40
-            }) } else (leprechaun.y <= 5); {
-                arrLeprechaun.forEach((mv) => {
-                    mv.speed *= +20
-                    mv.y += 40
-                }) }
-            })
-        }
-
+function spawnUnicorn() {
+    let unicorn = new Unicorn (
+        350, 600, 'gold', 40, 40)
+        unicorn.render();
+}
 
  //  KEYBOARD INTERACTION LOGIC
  
@@ -160,16 +138,15 @@ function changeMovement ()  {
  
  function gameLoop (){
      ctx.clearRect(0, 0, game.width, game.height);
-     movementDisplay.textContent = `X:${leprechaun.x}, Y:${leprechaun.y}`;
-     if (leprechaun.alive) {
+     movementDisplay.textContent = `X:${p1.x}, Y:${p1.y}`;
+     if (p1.alive) {
          leprechaun.render()
-         changeMovement()
+         spawnLeprechaun()
+         spawnUnicorn()
         } 
-        spawnLeprechaun()
-        p1.render()
 }
 
-
+// arrTriangles.forEach(element => element.render());
 
 // ====================== COLLISION DETECTION ======================= //
 
@@ -179,11 +156,7 @@ function changeMovement ()  {
 
 window.addEventListener('DOMContentLoaded', (e) => {
     p1 = new Unicorn(500, 900, "teal", 20, 20);
-    leprechaun = new Leprechaun(100, 200, 'black', 40, 80);
-    p1.render()
-    spawnLeprechaun()
-    changeMovement()
-    
+    leprechaun = new Leprechaun(100, 200, 'green', 40, 80);
     const runGame = setInterval(gameLoop, 60);
 })
 
