@@ -136,6 +136,18 @@ function detectHit (p1, p2) {
     }
 }
 
+function detechHit() {
+  for (i = 0; i < arrLeprechaun.length; i++) {
+       console.log(leprechaun);
+   if (p1.x < arrLeprechaun[i].x + 33 &&
+       p1.x + 3.5 > arrLeprechaun[i].x &&
+       p1.y < arrLeprechaun[i].y + 30 &&
+       p1.y +17 > arrLeprechaun[i].y) {
+           arrLeprechaun.splice(i, 1)
+       }
+   }
+}
+
 // ====================== COLLISION DETECTION ======================= //
 function detectHit() {
     for(a = 0; a < arrVeggies.length; a++) {

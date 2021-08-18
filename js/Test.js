@@ -1,17 +1,10 @@
 // GLOBAL DOM / VARIABLES
-/**
- * @todo Setting up all the variables need to be use
- */
 
  let movementDisplay = document.getElementById('movement');
  let game = document.getElementById('game');
-//  let unicorn;
-//  let leprechaun;
+
  const ctx = game.getContext('2d');
  
- ctx.fillStyle = 'white';
- ctx.strokeStyle = 'red';
- ctx.lineWidth = 6;
  
  // ====================== SETUP FOR CANVAS RENDERING ======================= //
  // 2D rendering context for canvas element.
@@ -65,7 +58,7 @@ class Leprechaun {
         this.color = color
         this.width = width
         this.height = height
-        this.speed = 5
+        this.speed = 1.5
         this.alive = true
     }
     render() {
@@ -100,16 +93,16 @@ spawnLeprechaun();
 
     switch(e.which) { 
         case 87:
-            p1.y - 10 >= 0 ? p1.y -= 10 : null;
+            p1.y - 20 >= 0 ? p1.y -= 20 : null;
             break;
         case 65:
-            p1.x - 10 >= 0 ? p1.x -= 10 : null;
+            p1.x - 20 >= 0 ? p1.x -= 20 : null;
             break;
         case 83:
-            p1.y + 10 <= game.height ? p1.y += 10 : null;
+            p1.y + 20 <= game.height ? p1.y += 20 : null;
             break;
         case 68:
-            p1.x + 10 <=  game.width ? p1.x += 10 : null;
+            p1.x + 20 <=  game.width ? p1.x += 20 : null;
             break;
     }
 } 
@@ -140,7 +133,6 @@ function detectHit(p1, p2) {
             p1.x < p2[i].x + p2[i].width
         );
         if (hitTest) {
-
             p1.alive = false;
             console.log('got hit!');
             p2.splice(i, 1);
@@ -157,7 +149,7 @@ function detectHit(p1, p2) {
 // Unicorn array
 
 window.addEventListener('DOMContentLoaded', (e) => {
-    p1 = new Unicorn(325, 600, "red", 20, 20);
+    p1 = new Unicorn(325, 600, "gold", 20, 20);
     bullet = new Attack(100, 500, 'white', 30, 30);
     const runGame = setInterval(gameLoop, 60);
 })
