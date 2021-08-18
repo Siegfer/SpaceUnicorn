@@ -65,7 +65,7 @@ class Leprechaun {
         this.color = color
         this.width = width
         this.height = height
-        this.speed = .5
+        this.speed = 1
         this.alive = true
     }
     render() {
@@ -100,20 +100,15 @@ spawnLeprechaun();
 
     switch(e.which) { 
         case 87:
-            // move hero up
-            // ternary operator
             p1.y - 10 >= 0 ? p1.y -= 10 : null;
             break;
         case 65:
-            // move left
             p1.x - 10 >= 0 ? p1.x -= 10 : null;
             break;
         case 83:
-            // move down
             p1.y + 10 <= game.height ? p1.y += 10 : null;
             break;
         case 68:
-            // move right
             p1.x + 10 <=  game.width ? p1.x += 10 : null;
             break;
     }
@@ -124,9 +119,10 @@ spawnLeprechaun();
  function gameLoop (){
      ctx.clearRect(0, 0, game.width, game.height);
      if (bullet.alive) {
-         bullet.render();
-         p1.render();
+         bullet.render()
+         p1.render()
          arrLeprechaun.forEach(element => element.render());
+         detectHit()
         } 
         
 }
@@ -152,7 +148,7 @@ function detectHit (p1,p2) {
 // Unicorn array
 
 window.addEventListener('DOMContentLoaded', (e) => {
-    p1 = new Unicorn(500, 500, "teal", 20, 20);
+    p1 = new Unicorn(325, 650, "red", 20, 20);
     bullet = new Attack(100, 500, 'white', 30, 30);
     const runGame = setInterval(gameLoop, 60);
 })
