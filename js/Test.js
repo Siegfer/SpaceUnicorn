@@ -49,6 +49,7 @@ class Attack {
         this.width = width
         this.height = height
         this.speed = -1.5
+        this.alive = true
     } 
     render() {
         // ctx.drawImage(pic3, this.x, this.y += this.speed, this.width, this.height)
@@ -81,40 +82,23 @@ class Leprechaun {
 // Leprechaun Array
 let arrLeprechaun = [];
 function spawnLeprechaun() {
-    for(let y = 0; y < 2; y++) {
-        for(let x = 0; x < 5; x++) {
+    for(let y = 0; y < 4; y++) {
+        for(let x = 0; x < 10; x++) {
             let leprechaun = new Leprechaun (
                 x * 70 + 20, y * 40 + 70, 'tomato', 30, 30)
                 arrLeprechaun.push(leprechaun)
-                //   leprechaun.render();
-                 arrLeprechaun.forEach(element => element.render());
                 }
-                console.log ('spawn:', spawnLeprechaun);
             }
         }
 spawnLeprechaun();
-
-// moving Leprechauns
-function moveLeprechauns() {
-    spawnLeprechaun();
-    if (e) {
-        arrLeprechaun = 0
-        spawnLeprechaun()
-    } else {
-        for (const leprechaun of arrLeprechaun) {
-            let x = math.floor(math.random() * game.width) -40;
-            let y = math.floor(math.random() * game.height) -80;
-            leprechaun = new Leprechaun(x, y, 'pink', 40, 80)
-        }
-    }
-    
-}
 
 function spawnUnicorn() {
     let unicorn = new Unicorn (
         350, 600, 'gold', 40, 40)
         unicorn.render();
 }
+
+
 
  //  KEYBOARD INTERACTION LOGIC
  
@@ -147,10 +131,11 @@ function spawnUnicorn() {
  function gameLoop (){
      ctx.clearRect(0, 0, game.width, game.height);
      movementDisplay.textContent = `X:${p1.x}, Y:${p1.y}`;
-     if (p1.alive) {
-         leprechaun.render()
-         spawnLeprechaun()
+     if (bullet.alive) {
+         bullet.render()
          spawnUnicorn()
+         arrLeprechaun.forEach(element => element.render());
+
         } 
 }
 
@@ -158,13 +143,24 @@ function spawnUnicorn() {
 
 // ====================== COLLISION DETECTION ======================= //
 
+// function detectHit (p1,p2) {
+//     for (let i = 0; i< p2.length; i++) {
+//         let hitTest = (
+//             p1.y + p1.height > p2.y  &&
+//             p1.y < p2.y + p2.height &&
+//             p1.x + p1.width > p2.x &&
+//             p1.x < p2.x + p2.width 
+//         )}
+//     }
+
+
 // ====================== PAINT INTIAL SCREEN ======================= //
 
 // EVENT LISTENERS
 
 window.addEventListener('DOMContentLoaded', (e) => {
     p1 = new Unicorn(500, 900, "teal", 20, 20);
-    leprechaun = new Leprechaun(100, 200, 'green', 40, 80);
+    bullet = new Attack(100, 500, 'white', 30, 30);
     const runGame = setInterval(gameLoop, 60);
 })
 
