@@ -94,7 +94,8 @@ function gameWin() {
 
 function gameOver() {
     if (p1.alive === false) {
-        document.getElementById('btm-left').textContent = 'How did you die.....'
+        document.getElementById('score2').textContent = 'How did you die.....'
+        
     }
 
 }
@@ -151,7 +152,8 @@ function detectHit(p1, p2) {
             p1.alive = false;
             p2.splice(i, 1)
             gameOver()
-
+            gameScore += 3
+            document.getElementById('score').innerText = gameScore + ' Unicorns have been saved!!'
         } 
     }
     return false;
@@ -191,7 +193,8 @@ window.addEventListener('DOMContentLoaded', (e) => {
 
 document.getElementById('stats').addEventListener('click', () => {
     document.getElementById('stats').textContent = 'SAVE THE UNICORN'
-    document.getElementById('stats'). textContent === 'SAVE THE UNICORN';
+    document.getElementsByClassName('GUI')
+    document.getElementById('stats'). textContent === 'SAVE THE UNICORN'
         p1 = new Unicorn(325, 600, "gold", 20, 20);
         bullet = new Attack(100, 500, 'white', 30, 30);
         const runGame = setInterval(gameLoop, 60);

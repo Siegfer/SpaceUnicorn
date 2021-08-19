@@ -191,7 +191,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
 
 document.getElementById('stats').addEventListener('click', () => {
    document.getElementById('stats').textContent = 'SAVE THE UNICORN'
-   document.getElementById('stats'). textContent === 'SAVE THE UNICORN';
+   document.getElementById('stats'). textContent === 'SAVE THE UNICORN'
        p1 = new Unicorn(325, 600, "gold", 20, 20);
        bullet = new Attack(100, 500, 'white', 30, 30);
        const runGame = setInterval(gameLoop, 60);

@@ -44,7 +44,7 @@ canvas {
     grid-template-areas: 
       "top-left top-left top-left" 
       "game game game" 
-      "btm-left middle btm-right";
+      "btm-left btm-left btm-right";
   }
 
 #top-left, #top-right, #btm-left, #btm-right {
@@ -91,6 +91,7 @@ main {
 
 #middle {
     grid-area: middle;
+    display: none;
     opacity: .5;
   }
 
