@@ -21,7 +21,7 @@ canvas {
     /* background-image: url('https://i.imgur.com/qqrVt8m.gif'); */
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: lightskyblue;
+    /* background-color: lightskyblue; */
     border-radius: 5%; 
     opacity: .6; 
   }
