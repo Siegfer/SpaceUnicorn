@@ -4,19 +4,19 @@ html, body {
 }
 
 body {
-    padding-top: 1em;
+    /* padding-top: 1em; */
     text-align: center;
     background-image: url('https://i.imgur.com/qqrVt8m.gif');
     /* background-image: url('https://i.imgur.com/tRwUHJu.gif'); */
     background-size: cover;
-    background-repeat: space;
+    /* background-repeat: no-repeat; */
     color: whitesmoke;
   }
   
 canvas {
     /* display: block; comment out @106pm 081621   */
-    width: 100%;
-    height: 100;
+    min-width: 100%;
+    min-height: auto;
     /* background-image: url('https://i.imgur.com/tRwUHJu.gif'); */
     /* background-image: url('https://i.imgur.com/qqrVt8m.gif'); */
     background-size: cover;
