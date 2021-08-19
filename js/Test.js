@@ -128,7 +128,7 @@ function gameOver() {
  
  function gameLoop (){
      ctx.clearRect(0, 0, game.width, game.height);
-     if (bullet.alive) {
+     if (p1.alive) {
          bullet.render()
          p1.render()
          arrLeprechaun.forEach(element => element.render())
@@ -136,7 +136,6 @@ function gameOver() {
         } 
         detectHit(p1, arrLeprechaun)
     }
-
 
 // ====================== COLLISION DETECTION ======================= //
 
@@ -182,22 +181,24 @@ function detectProjectile(p1, p2) {
 
 // EVENT LISTENERS
 
-document.addEventListener('keydown', movementHandler);
-window.addEventListener('DOMContentLoaded', (e) => {
-    if (document.getElementById('stats'). textContent === 'SAVE THE UNICORN') {
-        // p1 = new Unicorn(325, 600, "gold", 20, 20);
-        // bullet = new Attack(100, 500, 'white', 30, 30);
-        // const runGame = setInterval(gameLoop, 60);
-    }
-})
+// window.addEventListener('DOMContentLoaded', (e) => {
+//     document.getElementById('stats').textContent === 'SAVE THE UNICORN'
+//     })
+
 
 document.getElementById('stats').addEventListener('click', () => {
+    document.addEventListener('keydown', movementHandler)
     document.getElementById('stats').textContent = 'SAVE THE UNICORN'
     document.getElementsByClassName('GUI')
-    document.getElementById('stats'). textContent === 'SAVE THE UNICORN'
+    
+    if (document.getElementById('stats').textContent === 'SAVE THE UNICORN') {    
         p1 = new Unicorn(325, 600, "gold", 20, 20);
         bullet = new Attack(100, 500, 'white', 30, 30);
         const runGame = setInterval(gameLoop, 60);
+    } else {
+        location.reload();        
+        ctx.clearRect(0, 0, game.width, game.height);
+    }
     
     console.log('Im clicking')
 })
