@@ -86,6 +86,7 @@ function spawnLeprechaun() {
 spawnLeprechaun();
 
 
+
 //  KEYBOARD INTERACTION LOGIC
 
 function movementHandler (e) {
@@ -107,6 +108,11 @@ function movementHandler (e) {
    }
 } 
 
+// const arrBullets = [];
+//     document.addEventListener('keydown', (e) => {
+//         if (e.key === )
+//     })
+
 // ====================== GAME PROCESSES ======================= //
 
 function gameLoop (){
@@ -122,8 +128,6 @@ function gameLoop (){
 
 // ====================== COLLISION DETECTION ======================= //
 
-
-
 function detectHit(p1, p2) {
    for( i = 0; i < p2.length; i++) {
        let hitTest = (
@@ -136,11 +140,13 @@ function detectHit(p1, p2) {
            p1.alive = false;
            console.log('got hit!');
            p2.splice(i, 1);
+           score += 3;
+           document.getElementById('score').innerText = 'Score: ' + score
+
        } 
    }
    return false;
 }
-
 
 // ====================== PAINT INTIAL SCREEN ======================= //
 

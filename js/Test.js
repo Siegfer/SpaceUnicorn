@@ -4,7 +4,7 @@
  let game = document.getElementById('game');
 
  const ctx = game.getContext('2d');
- 
+ let gameScore = 0;
  
  // ====================== SETUP FOR CANVAS RENDERING ======================= //
  // 2D rendering context for canvas element.
@@ -58,7 +58,7 @@ class Leprechaun {
         this.color = color
         this.width = width
         this.height = height
-        this.speed = 1.5
+        this.speed = 1
         this.alive = true
     }
     render() {
@@ -70,7 +70,6 @@ class Leprechaun {
 
 // ====================== HELPER FUNCTIONS ======================= //
 
-//  GUI
 
 // Leprechaun Array
 const arrLeprechaun = [];
@@ -85,12 +84,17 @@ function spawnLeprechaun() {
         }
 spawnLeprechaun();
 
+// Game win/lose conditions
 
+function gameWin() {
+    if (arrLeprechaun.length === 0) {
+        document.getElementById('btm-left').textContent = 'YOU DESTROYED THE LEPRECHAUNS'
+    }
+}
 
  //  KEYBOARD INTERACTION LOGIC
  
  function movementHandler (e) {
-    console.log('movement', e.key);
 
     switch(e.which) { 
         case 87:
@@ -108,6 +112,11 @@ spawnLeprechaun();
     }
 } 
 
+// const arrBullets = [];
+//     document.addEventListener('keydown', (e) => {
+//         if (e.key === )
+//     })
+
  // ====================== GAME PROCESSES ======================= //
  
  function gameLoop (){
@@ -116,6 +125,7 @@ spawnLeprechaun();
          bullet.render()
          p1.render()
          arrLeprechaun.forEach(element => element.render())
+         gameWin();
         } 
         detectHit(p1, arrLeprechaun)
     }
@@ -134,8 +144,10 @@ function detectHit(p1, p2) {
         if (hitTest) {
             p1.alive = false;
             console.log('got hit!');
-            p2.splice(i, 1);
-            score += 30;
+            p2.splice(i, 1)
+            gameScore += 3
+            document.getElementById('score').innerText = 'Score: ' + gameScore
+
         } 
     }
     return false;
@@ -145,7 +157,6 @@ function detectHit(p1, p2) {
 
 // EVENT LISTENERS
 
-// Unicorn array
 
 window.addEventListener('DOMContentLoaded', (e) => {
     p1 = new Unicorn(325, 600, "gold", 20, 20);
