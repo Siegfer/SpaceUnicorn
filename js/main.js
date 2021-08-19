@@ -4,7 +4,7 @@ let movementDisplay = document.getElementById('movement');
 let game = document.getElementById('game');
 
 const ctx = game.getContext('2d');
-
+let gameScore = 0;
 
 // ====================== SETUP FOR CANVAS RENDERING ======================= //
 // 2D rendering context for canvas element.
@@ -58,7 +58,7 @@ class Leprechaun {
        this.color = color
        this.width = width
        this.height = height
-       this.speed = 1.5
+       this.speed = 1
        this.alive = true
    }
    render() {
@@ -69,8 +69,6 @@ class Leprechaun {
 }
 
 // ====================== HELPER FUNCTIONS ======================= //
-
-//  GUI
 
 // Leprechaun Array
 const arrLeprechaun = [];
@@ -85,12 +83,24 @@ function spawnLeprechaun() {
        }
 spawnLeprechaun();
 
+// Game win/lose conditions
+
+function gameWin() {
+   if (arrLeprechaun.length === 0) {
+       document.getElementById('btm-left').textContent = 'YOU DESTROYED THE LEPRECHAUNS'
+   }
+}
 
 
+function gameOver() {
+   if (p1.alive === false) {
+       document.getElementById('btm-left').textContent = 'How did you die.....'
+   }
+
+}
 //  KEYBOARD INTERACTION LOGIC
 
 function movementHandler (e) {
-   console.log('movement', e.key);
 
    switch(e.which) { 
        case 87:
@@ -121,6 +131,7 @@ function gameLoop (){
         bullet.render()
         p1.render()
         arrLeprechaun.forEach(element => element.render())
+        gameWin();
        } 
        detectHit(p1, arrLeprechaun)
    }
@@ -138,10 +149,27 @@ function detectHit(p1, p2) {
        );
        if (hitTest) {
            p1.alive = false;
+           p2.splice(i, 1)
+           gameOver()
+
+       } 
+   }
+   return false;
+}
+function detectProjectile(p1, p2) {
+   for( i = 0; i < p2.length; i++) {
+       let hitTest = (
+           p1.y + p1.height > p2[i].y  &&
+           p1.y < p2[i].y + p2[i].height &&
+           p1.x + p1.width > p2[i].x &&
+           p1.x < p2[i].x + p2[i].width
+       );
+       if (hitTest) {
+           p1.alive = false;
            console.log('got hit!');
-           p2.splice(i, 1);
-           score += 3;
-           document.getElementById('score').innerText = 'Score: ' + score
+           p2.splice(i, 1)
+           gameScore += 3
+           document.getElementById('score').innerText = 'Score: ' + gameScore
 
        } 
    }
@@ -152,14 +180,23 @@ function detectHit(p1, p2) {
 
 // EVENT LISTENERS
 
-// Unicorn array
-
+document.addEventListener('keydown', movementHandler);
 window.addEventListener('DOMContentLoaded', (e) => {
-   p1 = new Unicorn(325, 600, "gold", 20, 20);
-   bullet = new Attack(100, 500, 'white', 30, 30);
-   const runGame = setInterval(gameLoop, 60);
+   if (document.getElementById('stats'). textContent === 'SAVE THE UNICORN') {
+       // p1 = new Unicorn(325, 600, "gold", 20, 20);
+       // bullet = new Attack(100, 500, 'white', 30, 30);
+       // const runGame = setInterval(gameLoop, 60);
+   }
 })
 
-document.addEventListener('keydown', movementHandler);
+document.getElementById('stats').addEventListener('click', () => {
+   document.getElementById('stats').textContent = 'SAVE THE UNICORN'
+   document.getElementById('stats'). textContent === 'SAVE THE UNICORN';
+       p1 = new Unicorn(325, 600, "gold", 20, 20);
+       bullet = new Attack(100, 500, 'white', 30, 30);
+       const runGame = setInterval(gameLoop, 60);
+   
+   console.log('Im clicking')
+})
 
 // CODE STASH FOR OLD CODE
