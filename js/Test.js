@@ -86,6 +86,7 @@ function spawnLeprechaun() {
 spawnLeprechaun();
 
 
+
  //  KEYBOARD INTERACTION LOGIC
  
  function movementHandler (e) {
@@ -122,8 +123,6 @@ spawnLeprechaun();
 
 // ====================== COLLISION DETECTION ======================= //
 
-
-
 function detectHit(p1, p2) {
     for( i = 0; i < p2.length; i++) {
         let hitTest = (
@@ -136,11 +135,11 @@ function detectHit(p1, p2) {
             p1.alive = false;
             console.log('got hit!');
             p2.splice(i, 1);
+            score += 30;
         } 
     }
     return false;
 }
-
 
 // ====================== PAINT INTIAL SCREEN ======================= //
 
