@@ -1,7 +1,9 @@
 // GLOBAL DOM / VARIABLES
 
- let movementDisplay = document.getElementById('movement');
+//  let movementDisplay = document.getElementById('btm-left');
  let game = document.getElementById('game');
+ const arrLeprechaun = [];
+ const arrProjectiles = [];
 
  const ctx = game.getContext('2d');
  let gameScore = 0;
@@ -33,7 +35,8 @@
         ctx.fillRect(this.x, this.y, this.width, this.height);
      }
  }
- 
+
+ // Bullet
 class Attack {
     constructor(x, y, color, width, height){
         this.x = x
@@ -51,6 +54,7 @@ class Attack {
     }
 }
 
+// Leprechaun
 class Leprechaun {
     constructor(x, y, color, width, height) {
         this.x = x
@@ -58,7 +62,7 @@ class Leprechaun {
         this.color = color
         this.width = width
         this.height = height
-        this.speed = 1
+        this.speed = 3
         this.alive = true
     }
     render() {
@@ -71,7 +75,6 @@ class Leprechaun {
 // ====================== HELPER FUNCTIONS ======================= //
 
 // Leprechaun Array
-const arrLeprechaun = [];
 function spawnLeprechaun() {
     for(let y = 0; y < 4; y++) {
         for(let x = 0; x < 10; x++) {
@@ -84,7 +87,6 @@ function spawnLeprechaun() {
 spawnLeprechaun()
 
 //bullets Array
-const arrProjectiles = [];
     document.addEventListener('keydown', (e) => {
         if (e.which === 32 ) {
             let bullet = new Attack(p1.x, p1.y, "red", 20, 20)
@@ -92,10 +94,9 @@ const arrProjectiles = [];
         } 
     })
 
-
 // Game win/lose conditions
 function gameWin() {
-    if (arrLeprechaun.length === 0) {
+    if (arrLeprechaun.length === 0 ) {
         document.getElementById('btm-left').textContent = 'YOU DESTROYED THE LEPRECHAUNS'
     }
     return true;
@@ -127,23 +128,20 @@ function gameOver() {
     }
 } 
 
-// const renderAll = (
-//     p1.render()
-//     gameWin
-// )
-
  // ====================== GAME PROCESSES ======================= //
  
  function gameLoop (){
+    //  movementDisplay.textContent = `X: ${p1.x}\n${p1.y}`;
      ctx.clearRect(0, 0, game.width, game.height);
      if (p1.alive) {
          p1.render()
-         gameWin();
+         gameWin()
          arrLeprechaun.forEach(element => element.render())
          arrProjectiles.forEach(element => element.render())
         } 
         detectHit(p1, arrLeprechaun)
         detectProjectile(arrProjectiles, arrLeprechaun)
+        detectParameters(arrLeprechaun, p1)
     }
 
 // ====================== COLLISION DETECTION ======================= //
@@ -173,20 +171,33 @@ function detectProjectile(p1, p2) {
                 p1[j].y < p2[i].y + p2[i].height &&
                 p1[j].x + p1[j].width > p2[i].x &&
                 p1[j].x < p2[i].x + p2[i].width
-            );
+            )
                 if (hitTest) {
-                console.log('got hit!');
                 p1.splice(j, 1)
                 p2.splice(i, 1)
                 gameScore += 3
                 document.getElementById('score').innerText = gameScore + ' Unicorns have been saved!!'
-
             }
         }
 
     }
     return false;
 }
+
+function detectParameters(p1, p2) {
+    for (i = 0; i < p1.length; i++) {
+        let hitTest = (
+            p1[i].y >= 680
+        )
+        if (hitTest) {
+            p2.alive = false
+            p1.splice(i, 1)
+            gameOver()
+        }
+    }
+    return false
+}
+
 
 // ====================== PAINT INTIAL SCREEN ======================= //
 
@@ -201,5 +212,4 @@ document.getElementById('stats').addEventListener('click', () => {
         p1.alive
         const runGame = setInterval(gameLoop, 60);  
 })
- // CODE STASH FOR OLD CODE
  

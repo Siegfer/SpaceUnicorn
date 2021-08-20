@@ -2,6 +2,8 @@
 
 let movementDisplay = document.getElementById('movement');
 let game = document.getElementById('game');
+const arrLeprechaun = [];
+const arrProjectiles = [];
 
 const ctx = game.getContext('2d');
 let gameScore = 0;
@@ -34,6 +36,7 @@ class Unicorn {
     }
 }
 
+// Bullet
 class Attack {
    constructor(x, y, color, width, height){
        this.x = x
@@ -51,6 +54,7 @@ class Attack {
    }
 }
 
+// Leprechaun
 class Leprechaun {
    constructor(x, y, color, width, height) {
        this.x = x
@@ -71,7 +75,6 @@ class Leprechaun {
 // ====================== HELPER FUNCTIONS ======================= //
 
 // Leprechaun Array
-const arrLeprechaun = [];
 function spawnLeprechaun() {
    for(let y = 0; y < 4; y++) {
        for(let x = 0; x < 10; x++) {
@@ -84,14 +87,12 @@ function spawnLeprechaun() {
 spawnLeprechaun()
 
 //bullets Array
-const arrProjectiles = [];
    document.addEventListener('keydown', (e) => {
        if (e.which === 32 ) {
            let bullet = new Attack(p1.x, p1.y, "red", 20, 20)
            arrProjectiles.push(bullet)
        } 
    })
-
 
 // Game win/lose conditions
 function gameWin() {
@@ -127,18 +128,13 @@ function movementHandler (e) {
    }
 } 
 
-// const renderAll = (
-//     p1.render()
-//     gameWin
-// )
-
 // ====================== GAME PROCESSES ======================= //
 
 function gameLoop (){
     ctx.clearRect(0, 0, game.width, game.height);
     if (p1.alive) {
         p1.render()
-        gameWin();
+        gameWin()
         arrLeprechaun.forEach(element => element.render())
         arrProjectiles.forEach(element => element.render())
        } 
@@ -201,4 +197,3 @@ document.getElementById('stats').addEventListener('click', () => {
        p1.alive
        const runGame = setInterval(gameLoop, 60);  
 })
-// CODE STASH FOR OLD CODE
