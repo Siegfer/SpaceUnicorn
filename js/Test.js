@@ -90,15 +90,19 @@ spawnLeprechaun()
 // Game win/lose conditions
 function gameWin() {
     if (arrLeprechaun.length === 0 ) {
-        document.getElementById('btm-left').textContent = 'YOU DESTROYED THE LEPRECHAUNS'
+        p1.alive = false
+        document.getElementById('btm-left').textContent = ' '
         document.getElementById('btm-right').textContent = ' '
+        document.getElementById('win').style.display = "flex"
+        document.getElementById('win2').style.display = "flex"
     }
     return true;
 }
 function gameOver() {
     if (p1.alive === false) {
         document.getElementById('btm-left').textContent = 'How did you die.....'        
-        document.getElementById('loose2').textContent = 'UNICORNS EXTINCT' 
+        document.getElementById('lose').style.display = "flex"
+        // document.getElementById('win2').style.display = "flex"
     }
     return false;
 }
