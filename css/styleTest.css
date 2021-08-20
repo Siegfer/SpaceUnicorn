@@ -1,0 +1,127 @@
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+      /* padding-top: 1em; */
+      text-align: center;
+      background-image: url('https://i.imgur.com/qqrVt8m.gif');
+      /* background-image: url('https://i.imgur.com/tRwUHJu.gif'); */
+      background-size: cover;
+      /* background-repeat: no-repeat; */
+      color: whitesmoke;
+    }
+    
+  canvas {
+      /* display: block; comment out @106pm 081621   */
+      min-width: 100%;
+      min-height: auto;
+      /* background-image: url('https://i.imgur.com/tRwUHJu.gif'); */
+      /* background-image: url('https://i.imgur.com/qqrVt8m.gif'); */
+      background-size: cover;
+      background-repeat: no-repeat;
+      /* background-color: lightskyblue; */
+      border-radius: 5%; 
+      opacity: .6; 
+    }
+  
+  .container img {
+    width: 5%;
+    height: auto;
+  }
+  
+  #container {
+      max-width: 35em;
+      max-height: 35em;
+      background-size: cover;
+      margin: 0 auto;
+      padding: 1em;
+      display: grid;
+      grid-gap: 1em;
+      grid-template-rows: .25fr .5fr .25fr;
+      grid-template-columns: .25fr .5fr .25fr;
+      grid-template-areas: 
+        "top-left top-left top-left" 
+        "game game game" 
+        "btm-left btm-left btm-right";
+    }
+  
+  #top-left, #top-right, #btm-left, #btm-right {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  
+  #top-left {
+      grid-area: top-left;
+      /* background-image: url('https://i.imgur.com/CTXgF0G.png?1'); Galaxy background */
+      /* background-image: url('https://i.imgur.com/tRwUHJu.gif'); Seizure fast galaxy background */
+      opacity: 0.25;
+      background-size: cover; 
+      color: black;
+      border-radius: 80%;
+    }
+    
+  #headline {
+      grid-area: top-left;
+      color: white;
+      opacity: 1;
+    }
+  
+  #top-right {
+      grid-area: top-right;
+      display: none;
+    }
+  
+  main {
+      grid-area: game;
+    }
+  
+  #btm-left {
+      grid-area: btm-left;
+      color: cadetblue;
+      opacity: .5;
+    }
+  
+  #btm-right {
+      grid-area: btm-right;
+      opacity: .5;
+    }
+  
+  #middle {
+      grid-area: middle;
+      display: none;
+      opacity: .5;
+    }
+  
+  #unicorn{
+      display: none;
+     
+  }
+  
+  #attack{
+    display: none;
+  }
+  
+  #loose{
+    display: none;
+  }
+  
+  #leprechaun{
+    display: none;
+  }
+  
+  #status {
+    cursor: pointer;
+  }
+  #status:hover {
+    color: white;
+  }
+  #right {
+    font-size: 10px;
+    font-weight: bolder;
+  }
+  #left{
+    font-size: 12px;
+  }

@@ -1,23 +1,24 @@
 // GLOBAL DOM / VARIABLES
 
-//  let movementDisplay = document.getElementById('btm-left');
- let game = document.getElementById('game');
- const arrLeprechaun = [];
- const arrProjectiles = [];
+let game = document.getElementById('game');
+const ctx = game.getContext('2d')
+const imgUnicorn = document.getElementById('unicorn')
+const imgBullet = document.getElementById('attack')
+const imgLeprechaun = document.getElementById('leprechaun')
+const arrLeprechaun = []
+const arrProjectiles = []
 
- const ctx = game.getContext('2d');
- let gameScore = 0;
+let gameScore = 0;
+let imgP1 = imgUnicorn
+// ====================== SETUP FOR CANVAS RENDERING ======================= //
+// 2D rendering context for canvas element.
+// It is used for drawing shapes, text, images, and other objects.
  
- // ====================== SETUP FOR CANVAS RENDERING ======================= //
- // 2D rendering context for canvas element.
- // It is used for drawing shapes, text, images, and other objects.
+game.setAttribute("height", getComputedStyle(game)["height"]);
+game.setAttribute("width", getComputedStyle(game)["width"]);
  
- game.setAttribute("height", getComputedStyle(game)["height"]);
- game.setAttribute("width", getComputedStyle(game)["width"]);
  
- // ====================== SETUP FOR CANVAS RENDERING ======================= //
- 
- // ====================== ENTITIES ======================= //
+// ====================== ENTITIES ======================= //
  
  // Unicorn
  class Unicorn {
@@ -28,11 +29,13 @@
          this.width = width
          this.height = height
          this.alive = true
-     }
+         this.image = image()
+         this.image.src = imageUrl
+        }
      render() {
-        //  ctx.drawImage(pIcon, this.x, this.y, this,width, this.height)
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+         ctx.drawImage(this.image, this.x, this.y, this,width, this.height)
+        // ctx.fillStyle = this.color;
+        // ctx.fillRect(this.x, this.y, this.width, this.height);
      }
  }
 
@@ -199,16 +202,14 @@ function detectParameters(p1, p2) {
 }
 
 
-// ====================== PAINT INTIAL SCREEN ======================= //
-
-// EVENT LISTENERS
+// ====================== EVENT LISTENER ======================= //
 
 document.getElementById('stats').addEventListener('click', () => {
     document.addEventListener('keydown', movementHandler)
     document.getElementById('stats').textContent = 'SAVE THE UNICORN'
     document.getElementsByClassName('GUI') 
     document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
-        p1 = new Unicorn(325, 600, "gold", 20, 20);
+        p1 = new Unicorn("./img" ,325, 600, "gold", 20, 20);
         p1.alive
         const runGame = setInterval(gameLoop, 60);  
 })
