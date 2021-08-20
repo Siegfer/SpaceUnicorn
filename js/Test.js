@@ -31,22 +31,15 @@ game.setAttribute("width", getComputedStyle(game)["width"]);
 
         this.render = function() {
             ctx.drawImage(unicorn, this.x, this.y, this.width, this.height)
-    //      this.image = new image()
-    //      this.image.src = 
         }
-    //  render() {
-    //      ctx.drawImage(this.image, this.x, this.y, this,width, this.height)
-    //     // ctx.fillStyle = this.color;
-    //     // ctx.fillRect(this.x, this.y, this.width, this.height);
      }
  }
 
  // Bullet
 class Attack {
-    constructor(x, y, color, width, height){
+    constructor(x, y, width, height){
         this.x = x
         this.y = y
-        this.color = color
         this.width = width
         this.height = height
         this.speed = +10
@@ -64,7 +57,7 @@ class Leprechaun {
         this.y = y
         this.width = width
         this.height = height
-        this.speed = 1.5
+        this.speed = 1.25
         this.alive = true
     }
     render() {
@@ -77,9 +70,9 @@ class Leprechaun {
 // Leprechaun Array
 function spawnLeprechaun() {
     for(let y = 0; y < 4; y++) {
-        for(let x = 0; x < 10; x++) {
+        for(let x = 0; x < 8; x++) {
             let leprechaun = new Leprechaun (
-                x * 70 + 20, y * 40 + 80, 30, 30)
+                x * 90 + 0, y * 70 + 0, 70, 70)
                 arrLeprechaun.push(leprechaun)
                 }
             }
@@ -89,7 +82,7 @@ spawnLeprechaun()
 //bullets Array
     document.addEventListener('keydown', (e) => {
         if (e.which === 32 ) {
-            let bullet = new Attack(p1.x, p1.y, "red", 20, 20)
+            let bullet = new Attack(p1.x, p1.y, 35, 40)
             arrProjectiles.push(bullet)
         } 
     })
@@ -187,7 +180,7 @@ function detectProjectile(p1, p2) {
 function detectParameters(p1, p2) {
     for (i = 0; i < p1.length; i++) {
         let hitTest = (
-            p1[i].y >= 680
+            p1[i].y >= 600
         )
         if (hitTest) {
             p2.alive = false
@@ -206,7 +199,7 @@ document.getElementById('stats').addEventListener('click', () => {
     document.getElementById('stats').textContent = 'SAVE THE UNICORN'
     document.getElementsByClassName('GUI') 
     document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
-        p1 = new Unicorn(325, 600, "gold", 50, 90);
+        p1 = new Unicorn(325, 600, "gold", 40, 70);
         p1.alive
         const runGame = setInterval(gameLoop, 60);  
 })
