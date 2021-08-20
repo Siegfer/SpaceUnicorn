@@ -109,7 +109,6 @@ function gameOver() {
 }
 
 //  KEYBOARD INTERACTION LOGIC
-
 function movementHandler (e) {
 
    switch(e.which) { 
@@ -127,6 +126,11 @@ function movementHandler (e) {
            break;
    }
 } 
+
+// const renderAll = (
+//     p1.render()
+//     gameWin
+// )
 
 // ====================== GAME PROCESSES ======================= //
 
