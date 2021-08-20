@@ -8,27 +8,18 @@ body {
     text-align: center;
     background-image: url('https://i.imgur.com/qqrVt8m.gif');
     background-size: cover;
-    /* background-repeat: no-repeat; */
     color: whitesmoke;
   }
   
 canvas {
-    /* display: block; comment out @106pm 081621   */
     min-width: 100%;
     min-height: auto;
-    /* background-image: url('https://i.imgur.com/tRwUHJu.gif'); */
-    /* background-image: url('https://i.imgur.com/qqrVt8m.gif'); */
     background-size: cover;
     background-repeat: no-repeat;
-    /* background-color: lightskyblue; */
+    background-color: lightskyblue;
     border-radius: 5%; 
     opacity: .6; 
   }
-
-.container img {
-  width: 8%;
-  height: auto;
-}
 
 #container {
     max-width: 35em;
@@ -54,8 +45,6 @@ canvas {
 
 #top-left {
     grid-area: top-left;
-    /* background-image: url('https://i.imgur.com/CTXgF0G.png?1'); Galaxy background */
-    /* background-image: url('https://i.imgur.com/tRwUHJu.gif'); Seizure fast galaxy background */
     opacity: 0.25;
     background-size: cover; 
     color: black;
@@ -81,6 +70,7 @@ main {
     grid-area: btm-left;
     color: cadetblue;
     opacity: .5;
+    font-size: 25px;
   }
 
 #btm-right {
@@ -94,33 +84,6 @@ main {
     opacity: .5;
   }
 
-#unicorn{
+.GUI {
     display: none;
-   
-}
-
-#attack{
-  display: none;
-}
-
-#loose{
-  display: none;
-}
-
-#leprechaun{
-  display: none;
-}
-
-#status {
-  cursor: pointer;
-}
-#status:hover {
-  color: white;
-}
-#right {
-  font-size: 10px;
-  font-weight: bolder;
-}
-#left{
-  font-size: 12px;
 }

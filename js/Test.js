@@ -91,13 +91,14 @@ spawnLeprechaun()
 function gameWin() {
     if (arrLeprechaun.length === 0 ) {
         document.getElementById('btm-left').textContent = 'YOU DESTROYED THE LEPRECHAUNS'
+        document.getElementById('btm-right').textContent = ' '
     }
     return true;
 }
 function gameOver() {
     if (p1.alive === false) {
         document.getElementById('btm-left').textContent = 'How did you die.....'        
-        document.getElementById('btm-right').textContent = 'UNICORNS EXTINCT' 
+        document.getElementById('loose2').textContent = 'UNICORNS EXTINCT' 
     }
     return false;
 }
@@ -199,7 +200,7 @@ document.getElementById('stats').addEventListener('click', () => {
     document.getElementById('stats').textContent = 'SAVE THE UNICORN'
     document.getElementsByClassName('GUI') 
     document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
-        p1 = new Unicorn(325, 600, "gold", 40, 70);
+        p1 = new Unicorn(325, 600, "gold", 50, 70);
         p1.alive
         const runGame = setInterval(gameLoop, 60);  
 })
