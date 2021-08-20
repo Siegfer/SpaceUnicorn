@@ -41,13 +41,13 @@ class Attack {
        this.color = color
        this.width = width
        this.height = height
-       this.speed = -1.5
+       this.speed = +10
        this.alive = true
    } 
    render() {
        // ctx.drawImage(pic3, this.x, this.y += this.speed, this.width, this.height)
        ctx.fillStyle = this.color;
-       ctx.fillRect(this.x, this.y, this.width, this.height);
+       ctx.fillRect(this.x, this.y -= this.speed , this.width, this.height);
    }
 }
 
@@ -81,23 +81,30 @@ function spawnLeprechaun() {
                }
            }
        }
-spawnLeprechaun();
+spawnLeprechaun()
+
+//bullets Array
+const arrProjectiles = [];
+   document.addEventListener('keydown', (e) => {
+       if (e.which === 32 ) {
+           let bullet = new Attack(p1.x, p1.y, "red", 20, 20)
+           arrProjectiles.push(bullet)
+       } 
+   })
 
 // Game win/lose conditions
-
 function gameWin() {
    if (arrLeprechaun.length === 0) {
        document.getElementById('btm-left').textContent = 'YOU DESTROYED THE LEPRECHAUNS'
    }
 }
-
-
 function gameOver() {
    if (p1.alive === false) {
-       document.getElementById('btm-left').textContent = 'How did you die.....'
+       document.getElementById('btm-left').textContent = 'How did you die.....'        
+       document.getElementById('btm-right').textContent = 'UNICORNS EXTINCT' 
    }
-
 }
+
 //  KEYBOARD INTERACTION LOGIC
 
 function movementHandler (e) {
@@ -118,24 +125,21 @@ function movementHandler (e) {
    }
 } 
 
-// const arrBullets = [];
-//     document.addEventListener('keydown', (e) => {
-//         if (e.key === )
-//     })
-
 // ====================== GAME PROCESSES ======================= //
 
 function gameLoop (){
     ctx.clearRect(0, 0, game.width, game.height);
-    if (bullet.alive) {
+    if (p1.alive) {
         bullet.render()
         p1.render()
-        arrLeprechaun.forEach(element => element.render())
         gameWin();
+        arrLeprechaun.forEach(element => element.render())
+        arrProjectiles.forEach(element => element.render())
        } 
        detectHit(p1, arrLeprechaun)
+       detectProjectile(arrProjectiles, arrLeprechaun)
+       detectProjectile(bullet, arrLeprechaun)
    }
-
 
 // ====================== COLLISION DETECTION ======================= //
 
@@ -151,11 +155,11 @@ function detectHit(p1, p2) {
            p1.alive = false;
            p2.splice(i, 1)
            gameOver()
-
        } 
    }
    return false;
 }
+
 function detectProjectile(p1, p2) {
    for( i = 0; i < p2.length; i++) {
        let hitTest = (
@@ -169,7 +173,7 @@ function detectProjectile(p1, p2) {
            console.log('got hit!');
            p2.splice(i, 1)
            gameScore += 3
-           document.getElementById('score').innerText = 'Score: ' + gameScore
+           document.getElementById('score').innerText = gameScore + ' Unicorns have been saved!!'
 
        } 
    }
@@ -180,23 +184,15 @@ function detectProjectile(p1, p2) {
 
 // EVENT LISTENERS
 
-document.addEventListener('keydown', movementHandler);
-window.addEventListener('DOMContentLoaded', (e) => {
-   if (document.getElementById('stats'). textContent === 'SAVE THE UNICORN') {
-       // p1 = new Unicorn(325, 600, "gold", 20, 20);
-       // bullet = new Attack(100, 500, 'white', 30, 30);
-       // const runGame = setInterval(gameLoop, 60);
-   }
-})
-
 document.getElementById('stats').addEventListener('click', () => {
+   document.addEventListener('keydown', movementHandler)
    document.getElementById('stats').textContent = 'SAVE THE UNICORN'
-   document.getElementById('stats'). textContent === 'SAVE THE UNICORN'
+   document.getElementsByClassName('GUI')
+   document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
        p1 = new Unicorn(325, 600, "gold", 20, 20);
        bullet = new Attack(100, 500, 'white', 30, 30);
-       const runGame = setInterval(gameLoop, 60);
-   
-   console.log('Im clicking')
+       p1.alive
+       const runGame = setInterval(gameLoop, 60);  
+       console.log('clickinggg')
 })
-
 // CODE STASH FOR OLD CODE
