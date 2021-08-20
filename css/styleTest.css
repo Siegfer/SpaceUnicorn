@@ -25,11 +25,11 @@ html, body {
       border-radius: 5%; 
       opacity: .6; 
     }
-  
+/*   
   .container img {
-    width: 5%;
-    height: auto;
-  }
+    width: auto;
+    height: 15%;
+  } */
   
   #container {
       max-width: 35em;
@@ -95,22 +95,10 @@ html, body {
       opacity: .5;
     }
   
-  #unicorn{
-      display: none;
-     
+  #unicorn, #attack, #loose, #leprechaun {
+      display: none;   
   }
   
-  #attack{
-    display: none;
-  }
-  
-  #loose{
-    display: none;
-  }
-  
-  #leprechaun{
-    display: none;
-  }
   
   #status {
     cursor: pointer;

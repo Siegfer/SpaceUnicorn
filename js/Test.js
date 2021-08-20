@@ -1,15 +1,14 @@
 // GLOBAL DOM / VARIABLES
 
-let game = document.getElementById('game');
+let game = document.getElementById('game')
 const ctx = game.getContext('2d')
-const imgUnicorn = document.getElementById('unicorn')
-const imgBullet = document.getElementById('attack')
-const imgLeprechaun = document.getElementById('leprechaun')
+let unicorn = new Image()
+unicorn.src = './img/Unicorn.png'
+
 const arrLeprechaun = []
 const arrProjectiles = []
-
 let gameScore = 0;
-let imgP1 = imgUnicorn
+
 // ====================== SETUP FOR CANVAS RENDERING ======================= //
 // 2D rendering context for canvas element.
 // It is used for drawing shapes, text, images, and other objects.
@@ -29,13 +28,16 @@ game.setAttribute("width", getComputedStyle(game)["width"]);
          this.width = width
          this.height = height
          this.alive = true
-         this.image = image()
-         this.image.src = imageUrl
+
+        this.render = function() {
+            ctx.drawImage(unicorn, this.x, this.y, this.width, this.height)
+    //      this.image = new image()
+    //      this.image.src = 
         }
-     render() {
-         ctx.drawImage(this.image, this.x, this.y, this,width, this.height)
-        // ctx.fillStyle = this.color;
-        // ctx.fillRect(this.x, this.y, this.width, this.height);
+    //  render() {
+    //      ctx.drawImage(this.image, this.x, this.y, this,width, this.height)
+    //     // ctx.fillStyle = this.color;
+    //     // ctx.fillRect(this.x, this.y, this.width, this.height);
      }
  }
 
@@ -51,27 +53,22 @@ class Attack {
         this.alive = true
     } 
     render() {
-        // ctx.drawImage(pic3, this.x, this.y += this.speed, this.width, this.height)
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y -= this.speed , this.width, this.height);
+        ctx.drawImage(attack, this.x, this.y -= this.speed, this.width, this.height)
     }
 }
 
 // Leprechaun
 class Leprechaun {
-    constructor(x, y, color, width, height) {
+    constructor(x, y, width, height) {
         this.x = x
         this.y = y
-        this.color = color
         this.width = width
         this.height = height
-        this.speed = 3
+        this.speed = 1.5
         this.alive = true
     }
     render() {
-        // ctx.drawImage(pic2, this.x += this.speed, this.y, this.width, this.height)
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y += this.speed, this.width, this.height);
+        ctx.drawImage(leprechaun, this.x, this.y += this.speed, this.width, this.height)
     } 
 }
 
@@ -82,7 +79,7 @@ function spawnLeprechaun() {
     for(let y = 0; y < 4; y++) {
         for(let x = 0; x < 10; x++) {
             let leprechaun = new Leprechaun (
-                x * 70 + 20, y * 40 + 70, 'tomato', 30, 30)
+                x * 70 + 20, y * 40 + 80, 30, 30)
                 arrLeprechaun.push(leprechaun)
                 }
             }
@@ -209,7 +206,7 @@ document.getElementById('stats').addEventListener('click', () => {
     document.getElementById('stats').textContent = 'SAVE THE UNICORN'
     document.getElementsByClassName('GUI') 
     document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
-        p1 = new Unicorn("./img" ,325, 600, "gold", 20, 20);
+        p1 = new Unicorn(325, 600, "gold", 50, 90);
         p1.alive
         const runGame = setInterval(gameLoop, 60);  
 })
