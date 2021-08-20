@@ -92,17 +92,20 @@ const arrProjectiles = [];
        } 
    })
 
+
 // Game win/lose conditions
 function gameWin() {
    if (arrLeprechaun.length === 0) {
        document.getElementById('btm-left').textContent = 'YOU DESTROYED THE LEPRECHAUNS'
    }
+   return true;
 }
 function gameOver() {
    if (p1.alive === false) {
        document.getElementById('btm-left').textContent = 'How did you die.....'        
        document.getElementById('btm-right').textContent = 'UNICORNS EXTINCT' 
    }
+   return false;
 }
 
 //  KEYBOARD INTERACTION LOGIC
@@ -130,7 +133,6 @@ function movementHandler (e) {
 function gameLoop (){
     ctx.clearRect(0, 0, game.width, game.height);
     if (p1.alive) {
-        bullet.render()
         p1.render()
         gameWin();
         arrLeprechaun.forEach(element => element.render())
@@ -138,7 +140,6 @@ function gameLoop (){
        } 
        detectHit(p1, arrLeprechaun)
        detectProjectile(arrProjectiles, arrLeprechaun)
-       detectProjectile(bullet, arrLeprechaun)
    }
 
 // ====================== COLLISION DETECTION ======================= //
@@ -161,21 +162,24 @@ function detectHit(p1, p2) {
 }
 
 function detectProjectile(p1, p2) {
-   for( i = 0; i < p2.length; i++) {
-       let hitTest = (
-           p1.y + p1.height > p2[i].y  &&
-           p1.y < p2[i].y + p2[i].height &&
-           p1.x + p1.width > p2[i].x &&
-           p1.x < p2[i].x + p2[i].width
-       );
-       if (hitTest) {
-           p1.alive = false;
-           console.log('got hit!');
-           p2.splice(i, 1)
-           gameScore += 3
-           document.getElementById('score').innerText = gameScore + ' Unicorns have been saved!!'
+   for( i = 0; i < p2.length; i++) { 
+       for (j = 0; j < p1.length; j++) {
+           let hitTest = (
+               p1[j].y + p1[j].height > p2[i].y  &&
+               p1[j].y < p2[i].y + p2[i].height &&
+               p1[j].x + p1[j].width > p2[i].x &&
+               p1[j].x < p2[i].x + p2[i].width
+           );
+               if (hitTest) {
+               console.log('got hit!');
+               p1.splice(j, 1)
+               p2.splice(i, 1)
+               gameScore += 3
+               document.getElementById('score').innerText = gameScore + ' Unicorns have been saved!!'
 
-       } 
+           }
+       }
+
    }
    return false;
 }
@@ -187,12 +191,10 @@ function detectProjectile(p1, p2) {
 document.getElementById('stats').addEventListener('click', () => {
    document.addEventListener('keydown', movementHandler)
    document.getElementById('stats').textContent = 'SAVE THE UNICORN'
-   document.getElementsByClassName('GUI')
+   document.getElementsByClassName('GUI') 
    document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
        p1 = new Unicorn(325, 600, "gold", 20, 20);
-       bullet = new Attack(100, 500, 'white', 30, 30);
        p1.alive
        const runGame = setInterval(gameLoop, 60);  
-       console.log('clickinggg')
 })
 // CODE STASH FOR OLD CODE
