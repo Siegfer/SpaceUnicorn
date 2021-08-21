@@ -18,13 +18,19 @@ canvas {
     border-radius: 5%; 
     opacity: .6; 
 }
+#lost {
+    grid-area: game
+}
+#lost2 {
+    grid-area: btm-left
+}
 #win, #win2 {
     grid-area: game;
     /* display: flex; */
     flex-flow: column-reverse;
 }
 #win2 {
-    max-height: 25%;
+    max-height: 25%
 }
 
 #container {
@@ -40,13 +46,13 @@ canvas {
     grid-template-areas: 
         "top-left top-left top-left" 
         "game game game" 
-        "btm-left btm-left btm-right";
+        "btm-left btm-left btm-right"
 }
   
 #top-left, #top-right, #btm-left, #btm-right {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center
 }
   
 #top-left {
@@ -54,24 +60,27 @@ canvas {
     opacity: 0.25;
     background-size: cover; 
     color: black;
-    border-radius: 80%;
+    border-radius: 80%
 }
     
 #headline {
     grid-area: top-left;
     color: white;
-    opacity: 1;
+    opacity: 1
 }
   
 #top-right {
     grid-area: top-right;
-    display: none;
+    display: none
 }
   
 main {
-    grid-area: game;
+    grid-area: game
 }
-  
+#middle {
+    display: none;
+}
+
 #btm-left {
     grid-area: btm-left;
     color: cadetblue;
@@ -84,12 +93,6 @@ main {
     opacity: .5;
 }
   
-#middle {
-    grid-area: middle;
-    display: none;
-    opacity: .5;
-}
-
 .GUI {
     display: none;
 }

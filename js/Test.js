@@ -100,9 +100,10 @@ function gameWin() {
 }
 function gameOver() {
     if (p1.alive === false) {
-        document.getElementById('btm-left').textContent = 'How did you die.....'        
-        document.getElementById('lose').style.display = "flex"
-        // document.getElementById('win2').style.display = "flex"
+        document.getElementById('btm-left').textContent = "Someone can't hang..."
+        document.getElementById('btm-right').textContent = ' '
+        document.getElementById('lost').style.display = "flex"
+        document.getElementById('lost').style.display = "flex"
     }
     return false;
 }
@@ -202,7 +203,7 @@ function detectParameters(p1, p2) {
 document.getElementById('stats').addEventListener('click', () => {
     document.addEventListener('keydown', movementHandler)
     document.getElementById('stats').textContent = 'SAVE THE UNICORN'
-    document.getElementsByClassName('GUI') 
+    // document.getElementsByClassName('GUI').style.display = 'none' 
     document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
         p1 = new Unicorn(325, 600, "gold", 50, 70);
         p1.alive
