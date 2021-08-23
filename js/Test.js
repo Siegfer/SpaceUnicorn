@@ -100,10 +100,10 @@ function gameWin() {
 }
 function gameOver() {
     if (p1.alive === false) {
-        document.getElementById('btm-left').textContent = "Someone can't hang..."
+        document.getElementById('btm-left').textContent = "How embarassing..."
         document.getElementById('btm-right').textContent = ' '
         document.getElementById('lost').style.display = "flex"
-        document.getElementById('lost').style.display = "flex"
+        document.getElementById('lost2').style.display = "flex"
     }
     return false;
 }
@@ -200,13 +200,15 @@ function detectParameters(p1, p2) {
 
 // ====================== EVENT LISTENER ======================= //
 
-document.getElementById('stats').addEventListener('click', () => {
-    document.addEventListener('keydown', movementHandler)
-    document.getElementById('stats').textContent = 'SAVE THE UNICORN'
-    // document.getElementsByClassName('GUI').style.display = 'none' 
-    document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
+document.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        document.getElementById('control').style.display = 'none'
+        document.getElementById('stats').textContent = 'SAVE THE UNICORN'
+        document.getElementById('stats').style.background = 'img/SpaceSphere.gif'
+        document.addEventListener('keydown', movementHandler)
+        document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
         p1 = new Unicorn(325, 600, "gold", 50, 70);
         p1.alive
         const runGame = setInterval(gameLoop, 60);  
+    }
 })
- 

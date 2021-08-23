@@ -9,26 +9,44 @@ body {
     background-size: cover;
     color: whitesmoke;
 }
-    
+
+.GUI {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: none;
+}
+
+#big, #lil {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#big {
+    font-size: 50px;
+}
+
+#lil {
+    font-size: 25%;
+}
+
 canvas {
     min-width: 100%;
     min-height: auto;
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 5%; 
-    opacity: .6; 
 }
 #lost {
     grid-area: game
 }
+
 #lost2 {
-    grid-area: btm-left
+    grid-area: btm-right
 }
+
 #win, #win2 {
     grid-area: game;
-    /* display: flex; */
     flex-flow: column-reverse;
 }
+
 #win2 {
     max-height: 25%
 }
@@ -57,7 +75,6 @@ canvas {
   
 #top-left {
     grid-area: top-left;
-    opacity: 0.25;
     background-size: cover; 
     color: black;
     border-radius: 80%
@@ -66,7 +83,6 @@ canvas {
 #headline {
     grid-area: top-left;
     color: white;
-    opacity: 1
 }
   
 #top-right {
@@ -77,23 +93,16 @@ canvas {
 main {
     grid-area: game
 }
-#middle {
-    display: none;
+#control {
+    grid-area: game;
 }
 
 #btm-left {
     grid-area: btm-left;
-    color: cadetblue;
-    opacity: .5;
-    font-size: 25px;
-}
   
+}
+
 #btm-right {
     grid-area: btm-right;
-    opacity: .5;
 }
-  
-.GUI {
-    display: none;
-}
-  
+ 
