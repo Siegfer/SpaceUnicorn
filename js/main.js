@@ -198,9 +198,8 @@ document.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         document.getElementById('control').style.display = 'none'
         document.getElementById('stats').textContent = 'SAVE THE UNICORN'
-        document.getElementById('stats').style.background = 'img/SpaceSphere.gif'
-        document.addEventListener('keydown', movementHandler)
         document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
+        document.addEventListener('keydown', movementHandler)
         p1 = new Unicorn(325, 630, "gold", 50, 70);
         p1.alive
         const runGame = setInterval(gameLoop, 60);  
