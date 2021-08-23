@@ -192,7 +192,6 @@ function detectParameters(p1, p2) {
     return false
 }
 
-
 // ====================== EVENT LISTENER ======================= //
 
 document.addEventListener('keypress', (e) => {
