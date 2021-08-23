@@ -5,15 +5,24 @@ A Galaga inspired game!
 This project was created as a class assignment for General Asembly's Software Engineering Immersive.
 
 ---
-## How to play 🕹
+## How to install 🕹
 ---
 
 > 1. Go to [Space Unicorn](https://siegfer.github.io/SpaceUnicorn/).
 > 2. Otherwise `fork` or `clone` this repository to your local machine.
 > 3. Open `index.html` in your browser to play!
-> 4. Destroy all drunk Leprechauns!
-> 5. Don't let the Drunk Leprechaun catch the Precious Unicorn.
-> 6. Don't let the Leprechauns escape otherwise you'll loose.
+
+---
+## How to Play 🕹
+---
+- [W]: move Up.
+- [S]: move Down.
+- [A]: move Left.
+- [D]: move Right.
+- [Space]: Attack the Leprechauns.
+- Destroy all drunk Leprechauns!
+- Don't let the Drunk Leprechaun catch the Precious Unicorn.
+- Don't let the Leprechauns escape otherwise you'll loose.
 
 ---
 ## Languages 
