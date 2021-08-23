@@ -1,19 +1,112 @@
 # SpaceUnicorn
 
 SEI802 Project 1: Space Unicorn
-###
 A Galaga inspired game! 
-###
 This project was created as a class assignment for General Asembly's Software Engineering Immersive.
 
-
-# How to play 🕹
+---
+## How to play 🕹
+---
 
 > 1. Go to [Space Unicorn](https://siegfer.github.io/SpaceUnicorn/).
 > 2. Otherwise `fork` or `clone` this repository to your local machine.
 > 3. Open `index.html` in your browser to play!
 > 4. Destroy all drunk Leprechauns!
-> 5. Don't let the Drunk Leprechaun catch the Previous Unicorn.
+> 5. Don't let the Drunk Leprechaun catch the Precious Unicorn.
 > 6. Don't let the Leprechauns escape otherwise you'll loose.
 
+---
+## Languages 
+---
+
+- JavaScript
+- HTML5 Canvas
+- CSS
+
+---
+## Defining Classes
+---
+
+There are three different class within the game. However, two of them are similar in terms of `constructor`. 
+
+``` javascript
+// Unicorn
+ class Unicorn {
+     constructor (x, y, color, width, height) {
+         this.x = x
+         this.y = y
+         this.color = color
+         this.width = width
+         this.height = height
+         this.alive = true
+        }
+         render() {
+            ctx.drawImage(unicorn, this.x, this.y, this.width, this.height)
+     }
+ }
+ // Leprechaun
+class Leprechaun {
+    constructor(x, y, width, height) {
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
+        this.speed = 1.35
+        this.alive = true
+    }
+    render() {
+        ctx.drawImage(leprechaun, this.x, this.y += this.speed, this.width, this.height)
+    } 
+}
+```
+The main difference between these two is the addition of the `.speed` within the declaration of the `constructor` & `render`. This is use to move the `Class` up and down the `y` axis. 
+
+---
+## Helper Functions
+---
+
+Space Unicorn runs on a logic loop that set up two movement functions: one controls the movement of the Leprechauns, the other controls the movement of the bullets.
+
+Moving every `Objects` into an `Array` allow the game to populate the Leprechauns onto the canvas once both conditions for rows and column have been met. Similar requirement is being used for the bullets as well.
+
+``` javascript
+// Leprechaun Array
+function spawnLeprechaun() {
+    for(let y = 0; y < 4; y++) {
+        for(let x = 0; x < 8; x++) {
+            let leprechaun = new Leprechaun (
+                x * 90 + 0, y * 70 + 0, 70, 70)
+                arrLeprechaun.push(leprechaun)
+                }
+            }
+        }
+spawnLeprechaun()
+```
+
+---
+## Game Loop
+---
+
+The `gameLoop()` checks to see if there are any collision to determine the player won or lost. Otherwise the `gameLoop()` allow the player to `restart` the game.
+
+``` javascript
+function gameLoop (){
+     ctx.clearRect(0, 0, game.width, game.height);
+     if (p1.alive) {
+         p1.render()
+         gameWin()
+         arrLeprechaun.forEach(element => element.render())
+         arrProjectiles.forEach(element => element.render())
+         detectHit(p1, arrLeprechaun)
+         detectProjectile(arrProjectiles, arrLeprechaun)
+         detectParameters(arrLeprechaun, p1)
+        } else {
+            document.addEventListener('keydown', (e) => {
+                if (e.which === 13) {
+                    location.reload();
+                }
+            })
+        }
+    }
+```
 

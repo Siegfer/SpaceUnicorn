@@ -21,10 +21,9 @@ game.setAttribute("width", getComputedStyle(game)["width"]);
          this.width = width
          this.height = height
          this.alive = true
-
-        this.render = function() {
-            ctx.drawImage(unicorn, this.x, this.y, this.width, this.height)
         }
+         render() {
+            ctx.drawImage(unicorn, this.x, this.y, this.width, this.height)
      }
  }
  // Bullet
@@ -203,7 +202,7 @@ document.addEventListener('keypress', (e) => {
         document.getElementById('stats').style.background = 'img/SpaceSphere.gif'
         document.addEventListener('keydown', movementHandler)
         document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
-        p1 = new Unicorn(325, 600, "gold", 50, 70);
+        p1 = new Unicorn(325, 630, "gold", 50, 70);
         p1.alive
         const runGame = setInterval(gameLoop, 60);  
     }
