@@ -16,9 +16,7 @@ body {
 
 #top, #btm-left, #btm-right { 
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); 
-  -webkit-background-clip: text;
-  color: transparent;
+  
   font-size: 20px;
 }
 
@@ -96,8 +94,14 @@ main, #control {
 
 #btm-left {
   grid-area: btm-left;
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); 
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 #btm-right {
   grid-area: btm-right;
+  background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red); 
+  -webkit-background-clip: text;
+  color: transparent;
 }
