@@ -1,5 +1,4 @@
 // GLOBAL DOM / VARIABLES
-
 let game = document.getElementById('game')
 const ctx = game.getContext('2d')
 let unicorn = new Image()
@@ -8,17 +7,11 @@ unicorn.src = './img/Unicorn.png'
 const arrLeprechaun = []
 const arrProjectiles = []
 let gameScore = 0;
-
 // ====================== SETUP FOR CANVAS RENDERING ======================= //
-// 2D rendering context for canvas element.
 // It is used for drawing shapes, text, images, and other objects.
- 
 game.setAttribute("height", getComputedStyle(game)["height"]);
 game.setAttribute("width", getComputedStyle(game)["width"]);
- 
- 
 // ====================== ENTITIES ======================= //
- 
  // Unicorn
  class Unicorn {
      constructor (x, y, color, width, height) {
@@ -34,7 +27,6 @@ game.setAttribute("width", getComputedStyle(game)["width"]);
         }
      }
  }
-
  // Bullet
 class Attack {
     constructor(x, y, width, height){
@@ -49,7 +41,6 @@ class Attack {
         ctx.drawImage(attack, this.x, this.y -= this.speed, this.width, this.height)
     }
 }
-
 // Leprechaun
 class Leprechaun {
     constructor(x, y, width, height) {
@@ -66,7 +57,6 @@ class Leprechaun {
 }
 
 // ====================== HELPER FUNCTIONS ======================= //
-
 // Leprechaun Array
 function spawnLeprechaun() {
     for(let y = 0; y < 4; y++) {
