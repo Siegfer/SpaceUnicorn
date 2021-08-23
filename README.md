@@ -16,11 +16,4 @@ This project was created as a class assignment for General Asembly's Software En
 > 5. Don't let the Drunk Leprechaun catch the Previous Unicorn.
 > 6. Don't let the Leprechauns escape otherwise you'll loose.
 
-# Code Snippets
-
-### Making Classes for Unicorn, Leprechauns and Bullet rays.
-
-``` javascript
-```
-
 

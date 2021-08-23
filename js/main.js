@@ -48,7 +48,7 @@ class Leprechaun {
         this.y = y
         this.width = width
         this.height = height
-        this.speed = 1.25
+        this.speed = 1.35
         this.alive = true
     }
     render() {
