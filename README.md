@@ -110,3 +110,32 @@ function gameLoop (){
     }
 ```
 
+---
+## Collision Detection
+---
+
+Two collision detection is needed for the game. One to detect the Unicorn & Leprechauns, the other the bullet & Leprechauns.
+
+``` javascript
+function detectProjectile(p1, p2) {
+    for( i = 0; i < p2.length; i++) { 
+        for (j = 0; j < p1.length; j++) {
+            let hitTest = (
+                p1[j].y + p1[j].height > p2[i].y  &&
+                p1[j].y < p2[i].y + p2[i].height &&
+                p1[j].x + p1[j].width > p2[i].x &&
+                p1[j].x < p2[i].x + p2[i].width
+            )
+                if (hitTest) {
+                p1.splice(j, 1)
+                p2.splice(i, 1)
+                gameScore += 3
+                document.getElementById('score').innerText = gameScore + ' Unicorns have been saved!!'
+            }
+        }
+
+    }
+    return false;
+}
+```
+`detectProjectile()` allow the `gameLoop()` to detect the collision between the bullet & Leprechaun. For each collision the loop will remove the Leprechaun and add the score to the player score board.
