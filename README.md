@@ -148,3 +148,32 @@ function detectProjectile(p1, p2) {
 }
 ```
 `detectProjectile()` allow the `gameLoop()` to detect the collision between the bullet & Leprechaun. For each collision the loop will remove the Leprechaun and add the score to the player score board.
+
+---
+Win/Lose Conditions
+---
+
+`gameWin()` & `gameOver()` will run once the `player.alive` is false. This will run a couple of DOM to change the win/lose screen
+
+``` javascript
+function gameWin() {
+    if (arrLeprechaun.length === 0 ) {
+        p1.alive = false
+        document.getElementById('top').textContent= '[ Enter ] to go again!'
+        document.getElementById('btm-left').textContent = ' '
+        document.getElementById('btm-right').textContent = ' '
+        document.getElementById('win').style.display = "flex"
+        document.getElementById('win2').style.display = "flex"
+    }
+    return true;
+}
+function gameOver() {
+    if (p1.alive === false) {
+        document.getElementById('btm-left').textContent = '[ Enter ] to go again!'
+        document.getElementById('btm-right').textContent = ' '
+        document.getElementById('lost').style.display = "flex"
+        document.getElementById('lost2').style.display = "flex"
+    }
+    return false;
+}
+```
