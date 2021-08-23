@@ -5,36 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Space Unicorn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <link rel="stylesheet" href="css/styleTest.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>  
  <div id="container" class="container" >
-    <aside id="top-left" class="GUI">
-        <h2 id="headline"><span id="score2"></span></h2>
-    </aside>
-    <aside id="top-right" class="GUI" >
-        <h2 id="movement"></h2>
-    </aside>
+    <aside id="top" class="GUI"></aside>
     <main>
         <canvas id="game" width="700" height="700"><!--GAME GO IN HERE--></canvas>
             <img src="img/Unicorn.png" id="unicorn" class="GUI">
             <img src="img/Rainbow.png" id="attack" class="GUI" >
             <img src="img/Leprechaun.png" id="leprechaun" class="GUI">
-            <img src="img/SpaceSphere.gif" id="sphere" class="GUI">
     </main>
     <aside id="btm-left" class="GUI">
         <h2><span id="score"></span></h2>
     </aside>
     <aside id="control" class="">
-        <span id="big">DIRECTIONS</span><br>
         [ W ] : Move Up<br>
         [ S ] : Move Down<br>
         [ A ] : Move Left<br>
         [ D ] : Move Right<br>
         [ Space ] : Attack the Leprechauns<br>
-        [ Enter ] : when you are ready!<br> 
-        <span id="lil">psst.. hit enter if you're still confuse...</span>
+        [ Enter ] : to [ Start ]<br> 
+        <span id="big">DIRECTIONS</span><br>
 
     </aside>
     <aside id="btm-right" class="GUI">
@@ -47,7 +39,7 @@
     <div id="win2" class="GUI">
         <img src="img/Winnerbanner.gif">
     </div>
-    <div id="lost" class="GUI">      
+    <div id="lost" class="GUI">
         <img src="img/Lost.gif" id="lost">
     </div>
     <div id="lost2" class="GUI">      
@@ -55,8 +47,6 @@
     </div>
     
  </div>  
-    <!-- <script src="js/main.js"></script> -->
-    <script src="js/Test.js"></script>
-    <!-- <script src="js/Test Playground.js"></script> -->
+    <script src="js/main.js"></script>
 </body>
 </html>

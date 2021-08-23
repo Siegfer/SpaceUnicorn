@@ -90,14 +90,21 @@ spawnLeprechaun()
 // Game win/lose conditions
 function gameWin() {
     if (arrLeprechaun.length === 0 ) {
-        document.getElementById('btm-left').textContent = 'YOU DESTROYED THE LEPRECHAUNS'
+        p1.alive = false
+        document.getElementById('top').textContent= '[ Enter ] to go again!'
+        document.getElementById('btm-left').textContent = ' '
+        document.getElementById('btm-right').textContent = ' '
+        document.getElementById('win').style.display = "flex"
+        document.getElementById('win2').style.display = "flex"
     }
     return true;
 }
 function gameOver() {
     if (p1.alive === false) {
-        document.getElementById('btm-left').textContent = 'How did you die.....'        
-        document.getElementById('btm-right').textContent = 'UNICORNS EXTINCT' 
+        document.getElementById('btm-left').textContent = '[ Enter ] to go again!'
+        document.getElementById('btm-right').textContent = ' '
+        document.getElementById('lost').style.display = "flex"
+        document.getElementById('lost2').style.display = "flex"
     }
     return false;
 }
@@ -124,17 +131,22 @@ function gameOver() {
  // ====================== GAME PROCESSES ======================= //
  
  function gameLoop (){
-    //  movementDisplay.textContent = `X: ${p1.x}\n${p1.y}`;
      ctx.clearRect(0, 0, game.width, game.height);
      if (p1.alive) {
          p1.render()
          gameWin()
          arrLeprechaun.forEach(element => element.render())
          arrProjectiles.forEach(element => element.render())
-        } 
-        detectHit(p1, arrLeprechaun)
-        detectProjectile(arrProjectiles, arrLeprechaun)
-        detectParameters(arrLeprechaun, p1)
+         detectHit(p1, arrLeprechaun)
+         detectProjectile(arrProjectiles, arrLeprechaun)
+         detectParameters(arrLeprechaun, p1)
+        } else {
+            document.addEventListener('keydown', (e) => {
+                if (e.which === 13) {
+                    location.reload();
+                }
+            })
+        }
     }
 
 // ====================== COLLISION DETECTION ======================= //
@@ -194,13 +206,15 @@ function detectParameters(p1, p2) {
 
 // ====================== EVENT LISTENER ======================= //
 
-document.getElementById('stats').addEventListener('click', () => {
-    document.addEventListener('keydown', movementHandler)
-    document.getElementById('stats').textContent = 'SAVE THE UNICORN'
-    document.getElementsByClassName('GUI') 
-    document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
-        p1 = new Unicorn(325, 600, "gold", 40, 70);
+document.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        document.getElementById('control').style.display = 'none'
+        document.getElementById('stats').textContent = 'SAVE THE UNICORN'
+        document.getElementById('stats').style.background = 'img/SpaceSphere.gif'
+        document.addEventListener('keydown', movementHandler)
+        document.getElementById('stats').textContent === 'SAVE THE UNICORN'  
+        p1 = new Unicorn(325, 600, "gold", 50, 70);
         p1.alive
         const runGame = setInterval(gameLoop, 60);  
+    }
 })
- 

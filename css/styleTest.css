@@ -7,7 +7,6 @@ body {
     text-align: center;
     background-image: url('https://i.imgur.com/qqrVt8m.gif');
     background-size: cover;
-    color: whitesmoke;
 }
 
 .GUI {
@@ -15,16 +14,19 @@ body {
     display: none;
 }
 
-#big, #lil {
+#top, #btm-left, #btm-right { 
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); 
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 20px;
 }
 
 #big {
     font-size: 50px;
-}
-
-#lil {
-    font-size: 25%;
+    background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red); 
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 canvas {
@@ -62,44 +64,38 @@ canvas {
     grid-template-rows: .25fr .5fr .25fr;
     grid-template-columns: .25fr .5fr .25fr;
     grid-template-areas: 
-        "top-left top-left top-left" 
+        "top top top" 
         "game game game" 
-        "btm-left btm-left btm-right"
+        "btm-left btm-left btm-right";
+    
 }
   
-#top-left, #top-right, #btm-left, #btm-right {
+#btm-left, #btm-right {
     display: flex;
     justify-content: space-around;
     align-items: center
 }
   
-#top-left {
-    grid-area: top-left;
-    background-size: cover; 
-    color: black;
-    border-radius: 80%
+#top {
+    grid-area: top;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); 
+    -webkit-background-clip: text;
+    color: transparent;
 }
     
-#headline {
-    grid-area: top-left;
-    color: white;
-}
-  
-#top-right {
-    grid-area: top-right;
-    display: none
-}
-  
-main {
-    grid-area: game
-}
-#control {
+main, #control {
     grid-area: game;
+    display: flex;
+    flex-direction: column-reverse;
+    background-image: linear-gradient(to bottom, violet, indigo, blue, green, yellow, orange, red); 
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 #btm-left {
     grid-area: btm-left;
-  
 }
 
 #btm-right {
